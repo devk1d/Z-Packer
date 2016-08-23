@@ -1,0 +1,21 @@
+{
+  "name": "z-project",
+  "version": "1.0.0",
+  "description": "Z-Project",
+  "main": "./webpack_config/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "NODE_ENV=development node ./webpack_config/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/devk1d/Z-Project.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/devk1d/Z-Project/issues"
+  },
+  "homepage": "https://github.com/devk1d/Z-Project#readme",
+  "dependencies": {}
+}
