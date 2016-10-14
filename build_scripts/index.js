@@ -6,11 +6,36 @@ import fs from 'fs-extra';
 import glob from 'glob';
 import config from './config';
 import CopyFiles from './libs/CopyFiles';
+import PackLibs from './tasks/PackLibs';
+import PackSinglePage from './tasks/PackSinglePage';
 
 const paths = config.paths;
 const regExp = config.regExp;
 
-CopyFiles('.');
+let ASSETS = {
+    libs: {
+        js: '',
+        css: ''
+    }
+};
+
+
+(async function run() {
+
+    global.TEMP_CACHE = {};
+    // 复制 pages 目录
+    // CopyFiles('.');
+
+    // 打包 libs
+    // const libsAsset = await PackLibs(); // return {js: 'js file name', css: 'css file name'}
+    // console.log(libsAsset);
+    // ASSETS.libs = libsAsset;
+
+    // 遍历页面
+    const pageFiles = glob.sync( path.join(paths.output, '*', '*', '*.php') );
+    pageFiles.forEach(async function(filePath) {
+        await PackSinglePage(filePath, ASSETS.libs);
+    })
 
 // // 删除 output 目录
 // fs.removeSync(paths.output);
@@ -34,8 +59,4 @@ CopyFiles('.');
 //
 // console.log(packedJsName);
 
-// 遍历页面
-// const pageFiles = glob.sync( path.join(paths.output, '*', '*', '*.php') );
-// pageFiles.forEach((filePath) => {
-//     PackPageStatic(filePath);
-// })
+})();

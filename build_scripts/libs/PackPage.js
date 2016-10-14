@@ -6,7 +6,7 @@ import config from '../config';
 import GetPageIncludeWidget from './GetPageIncludeWidget';
 import Pack_JS_CSS from './Pack_JS_CSS';
 
-function pack(pagePath) {
+function PackPage(pagePath) {
     const widgetName = GetPageIncludeWidget(pagePath);
 
     const packedJsName = Pack_JS_CSS({
@@ -39,4 +39,4 @@ function pack(pagePath) {
 }
 
 
-export default pack;
+export default PackPage;

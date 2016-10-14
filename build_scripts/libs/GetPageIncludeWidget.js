@@ -5,20 +5,21 @@ import config from '../config';
 
 const regExp = config.regExp;
 
-function fileExists(filePath) {
-    try {
-        return fs.statSync(filePath).isFile();
-    } catch (err) {
-        return false;
-    }
+function arrUnique(arr) {
+    return arr.filter((value, index, self) => {
+        return self.indexOf(value) === index;
+    })
 }
 
 // 获取包含的 widget
+let INCLUDE_CACHE = {};
 function getIncludeWidget(filePath) {
+    if(INCLUDE_CACHE[filePath]) {
+        return INCLUDE_CACHE[filePath];
+    }
+
     const _fileContent = fs.readFileSync(filePath, { encoding: 'utf8' });
-    // console.log(_fileContent);
     const matches = _fileContent.match(regExp.widget) || [];
-    // console.log(matches);
 
     let includeWidget = [];
 
@@ -33,46 +34,34 @@ function getIncludeWidget(filePath) {
         includeWidget.push(name);
     })
 
-    includeWidget.length && (includeWidget = includeWidget.filter((value, index, self) => {
-        return self.indexOf(value) === index;
-    }))
+    includeWidget = arrUnique(includeWidget)
+
+    INCLUDE_CACHE[filePath] = includeWidget;
 
     return includeWidget;
 }
 
-// 分析页面目录所有 widget 的依赖关系
-function mapWidget(pageDir) {
-    const maps = {};
-    const files = glob.sync([pageDir, '*', '*.php'].join('/'));
-
-    files.forEach((filePath) => {
-        const pathInfo = path.parse(filePath);
-        maps[pathInfo.name] = getIncludeWidget(filePath);
-    })
-
-    return maps;
-}
-
-export default function getPageIncludeWidget(filePath) {
-    const pageDir = path.dirname(filePath); // 页面目录
-    const maps = mapWidget(pageDir);
+// 分析页面  widget 的依赖关系
+let count = 99; // 避免循环依赖
+function getWidget(filePath, isPage) {
+    if(count < 0) return [];
+    count--;
 
     let widgets = getIncludeWidget(filePath);
+    let subWidget = [];
 
-    let newWidgets = {};
-    function addMark(name) {
-        if(maps[name]) {
-            newWidgets[name] = 1;
-            maps[name].forEach((subName) => { addMark(subName)  })
-        }
-    }
+    widgets.forEach((widgetName) => {
+        const widgetFilePath = isPage ? path.join(path.parse(filePath).dir, widgetName, widgetName + '.php') : path.join(path.parse(filePath).dir, '..', widgetName, widgetName + '.php');
+        subWidget = subWidget.concat(getWidget(widgetFilePath, false));
+    })
 
-    widgets.forEach((name) => { addMark(name) });
+    widgets = arrUnique(widgets.concat(subWidget));
+    return widgets;
+}
 
-    let widgetArr = [];
-    for (var key in newWidgets) {
-        widgetArr.push(key);
-    }
+export default function getPageIncludeWidget(pagePath) {
+    count = 99;
 
-    return widgetArr;
+    const widgets = getWidget(pagePath, true);
+    return widgets;
 };

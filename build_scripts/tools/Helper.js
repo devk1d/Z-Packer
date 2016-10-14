@@ -1,4 +1,4 @@
-
+import fs from 'fs-extra';
 import path from 'path';
 import chalk from 'chalk';
 import CryptoJS from 'crypto-js';
@@ -10,7 +10,24 @@ let Helper = {
     },
     log: (msg) => {
         console.log(chalk.green(msg));
-    }
+    },
+    error: (msg) => {
+        console.log(chalk.red(msg));
+    },
+    fileExists: (filePath) => {
+        try {
+            return fs.statSync(filePath).isFile();
+        } catch (err) {
+            return false;
+        }
+    },
+    dirExists: (filePath) => {
+        try {
+            return fs.statSync(filePath).isDirectory();
+        } catch (err) {
+            return false;
+        }
+    },
 }
 
 Helper.md5Name = (filePath, content) => {

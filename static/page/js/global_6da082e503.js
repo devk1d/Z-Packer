@@ -1,0 +1,1 @@
+var footer=1,global=1,header=1;
