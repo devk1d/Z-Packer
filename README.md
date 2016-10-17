@@ -50,9 +50,6 @@ libs 变化
 
 辅助方法：
 
-    TransformCSS
-    TransformJS
-    TransformImg
     PackJSCSS // 合并JS CSS
 
 
