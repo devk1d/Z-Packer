@@ -1,0 +1,285 @@
+
+.post_system_head {
+	.head_icon {
+		background-position: 11px -297px;
+		&.active, &:hover {
+			background-position: 11px -656px;
+		}
+	}
+}
+
+.J_system_tools_wrap {
+	.wrap_tab {
+		height: 600px;
+	}
+	.systemTab_left {
+		width: 150px;
+		height: 100%;
+		float: left;
+		.left_tabs {
+			margin-top: 80px;
+			font-size: 14px; 
+			color: #abb0bc;
+			> li {
+				line-height: 35px;
+				text-align: right;
+				padding-right: 50px;
+				cursor: pointer;
+				&.active {
+					color: #575d6a;
+				}
+			}
+		}
+
+		.system_start {
+			background-position: 108px -1607px;
+			&.active {
+				background-position: 108px -1557px;
+			}
+		}
+
+		.system_perf{
+			background-position: 108px -1704px;
+			&.active {
+				background-position: 108px -1654px;
+			}
+		}
+
+	}
+	.systemTab_right {
+		height: 100%;
+		width: 970px;
+		background: #fff;
+		float: right;
+		.tab_current {
+			margin: 32px 140px 16px 136px;
+			float: left;
+		}
+		.tab_compare {
+			margin: 32px 110px 16px 0px;
+			float: right;
+		}
+		.system_app {
+			position: relative;
+			top: 210px;
+			left: 105px;
+		}
+		.system_tap {
+			position: relative;
+			top: 370px;
+			left: 135px;
+		}
+		.sysTab_right {
+			display: none;
+			&.active{
+				display: block;
+			}
+		}
+		.current_animateWrap, .compare_animateWrap {
+			width: 290px;
+			height: 500px;
+			color: #fff;
+			background-color: #31343b;
+			overflow: hidden;
+		}
+		.software_perf {
+			position: relative;
+			top: 120px;
+			.perf_img {
+				display: block;
+				margin: 0 auto;
+			}
+			.perf_dec {
+				text-align: center;
+			}
+		}
+
+		.soft_content {
+			display: none;
+			background: red;
+			width: 266px;
+			height: 476px; 
+			padding: 12px;
+			background: #31343b;
+			.soft_head {
+				height: 32px;
+				border: 2px solid #50535b;
+				background: #40434b;
+				margin-bottom: 10px;
+			}
+			.soft_user {
+				margin-bottom: 10px;
+				.user_photo {
+					width: 80px;
+					height: 80px;
+					float: left;
+					border: 2px solid #50535b;
+					background: #40434b;
+				}
+				.user_dec {
+					float: right;
+					.dec_sign {
+						width: 150px;
+						height: 23px;
+						border: 2px solid #50535b;
+						margin-top: 20px;
+						margin-bottom: 10px;
+						background: #40434b;
+					}
+					.dec_addr {
+						width: 100px;
+						height: 10px;
+						border: 2px solid #50535b;
+						background: #40434b;
+					}
+				}
+			}
+
+			.dialog_item {
+				margin-bottom: 15px;
+				.dialog_time {
+					width: 80px;
+					height: 30px;
+					float: left;
+					border: 2px solid #50535b;
+					background: #40434b;
+				}
+				.dialog_content {
+					width: 168px;
+					height: 67px;
+					float: right;
+					border: 2px solid #50535b;
+					background: #40434b;
+				}
+			}
+
+		}
+
+	}
+}
+
+.system_game_wrap {
+	.system_imgWrap {
+		margin-top: 60px;
+		height: 400px;
+	}
+	.game_result {
+		display: none;
+		position: relative;
+		top: -204px;
+		text-align: center;
+	}
+	.sysTab_game_start .game_superman {
+		position: relative;
+		top: -156px;
+		left: -67px;
+	}
+	.sysTab_game_performance .game_superman {
+		position: relative;
+		top: -156px;
+		left: 111px;
+	}
+	.game_result {
+		font-size: 14px;
+	}
+}
+
+.system_score_wrap {
+	.score_tap {
+		position: relative;
+		top: 214px;
+		left: 54px;
+	}
+	.score_result {
+		display: none;
+		line-height: 40px;
+		position: relative;
+		font-size: 14px;
+		.score_title {
+			text-align: right;
+			width: 100px;
+			margin-right: 20px;
+		}
+	}
+
+	.geek_result {
+		top: 210px;
+		padding-left: 74px;
+	}
+
+	.gfx_result {
+		top: 170px;
+		padding-left: 39px;
+		.score_title {
+			display: inline-block;
+			width: 80px;
+			text-align: right;
+		}
+	}
+
+	.sd_result {
+		top: 170px;
+		padding-left: 48px;
+		.score_title {
+			display: inline-block;
+			width: 90px;
+			text-align: right;
+		}
+	}
+
+	.left_geek {
+		background-position: 108px -1748px;
+		&.active {
+			background-position: 108px -1784px;
+		}
+	}
+	.left_gfx {
+		background-position: 108px -1827px;
+		&.active {
+			background-position: 108px -1872px;
+		}
+	}
+	.left_sd {
+		background-position: 108px -1916px;
+		&.active {
+			background-position: 108px -1956px;
+		}
+	}
+
+}
+
+	.system_ripple {
+		position: absolute;
+		width: 80px;
+		height: 80px;
+		top: 242px;
+		left: 391px;
+		background: #1763a7;
+		border-radius: 100%;
+		-webkit-transform: scale(0);
+		-ms-transform: scale(0);
+		transform: scale(0);
+		pointer-events: none;
+		&.compare_ripple {
+			left: 824px;
+		}
+	}
+
+	.system_ripple.show {
+		-webkit-animation: ripple .5s ease-out;
+	    animation: ripple .5s ease-out;
+	}
+
+	@-webkit-keyframes 
+	ripple { to {
+	 -webkit-transform: scale(1.5);
+	 transform: scale(1.5);
+	 opacity: 0;
+	}}
+
+	@keyframes 
+	ripple { to {
+	 -webkit-transform: scale(1.5);
+	 transform: scale(1.5);
+	 opacity: 0;
+	}}

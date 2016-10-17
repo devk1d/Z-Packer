@@ -1,0 +1,298 @@
+body {
+	width: 100%;
+	margin: 0 auto;
+	padding: 0;
+    font-family: "Helvitica Neue", Helvitica, Arial, sans-serif;
+	font-size: 13px;
+	background-color: #f7f7f7;
+	color: #31343b;
+}
+img {
+	border: none;	
+}
+a {
+  	text-decoration: none;
+}
+.clear {
+	zoom: 1;
+	&:after {
+	  content: "."; 
+	  display: block; 
+	  height: 0; 
+	  visibility: hidden; 
+	  clear: both; 
+	  overflow: hidden;
+	}
+}
+input {
+	font-size: 13px;
+}
+
+@height: 32px;
+
+.mlogin_inner {	
+	width: 100%;	
+	overflow: hidden;
+	text-align: center;
+
+	/*  优先码  */
+	.priority_code {
+		padding-top: 30px;
+
+		.priority_tit {
+			font-size: 14px;
+			color: #0fae6f;
+			span {
+				display: inline-block;
+				background: url(pri1.png) no-repeat;
+				background-size: auto 22px;
+				height: 22px;
+				line-height: 22px;
+				text-indent: 28px;
+			}
+		}
+		.priority_tips {
+			font-size: 12px;
+			padding-top: 15px;
+
+		}
+
+	}
+
+	.inner_header {
+		height: 44px;
+	    background-color: #fff;	
+		
+		a {
+			display: block;	
+			background: url(zealer.png) no-repeat;
+			background-position: 50% 50%;
+			background-size: 61px auto;
+			height: 100%;
+			border-bottom: 1px solid #eceef1;
+		}
+	}
+	.mContent {
+		width: 87.5%;
+		margin: 0 auto;
+
+		.mLogin_notice {
+			text-align: left;
+			margin-top: 25px;
+			color: #575d6a;
+		}
+		.mlogin_links {
+			margin-top: 30px;
+			.mlogin_forgot {
+				display: none;
+				float: left;
+				color: #757e91;
+			}
+			.mlogin_reg {
+				float: right;
+				text-decoration: underline;
+				color: #31343b;
+			}
+		}
+		.quick_text {
+			color: #757e91;
+			width: 60px;
+			font-size: 11px;
+			display: inline-block;
+			position: relative;
+			top: 7px;
+			margin-top: 35px;
+			background: #f7f7f7;
+		}
+		.quick_links {
+			width: 80%;
+			height: 70px;
+			margin: 0 auto;
+			border-top: 1px solid #747c8e;
+			padding-top: 13px;
+			.links_wechat {
+				display: block;
+				float: left;
+				width: 25%;
+				height: 70px;
+				background: url(weixin.png) no-repeat center;
+				background-size: 44px auto;
+			}
+			.links_weibo {
+				display: block;
+				float: left;
+				width: 25%;
+				height: 70px;
+				background: url(sina.png) no-repeat center;
+				background-size: 44px auto;
+			}
+			.links_qq {
+				display: block;
+				float: left;
+				width: 25%;
+				height: 70px;
+				background: url(qq.png) no-repeat center;
+				background-size: 44px auto;
+			}
+			.links_ali{
+				display: block;
+				float: left;
+				width: 25%;
+				height: 70px;
+				background: url(ali.png) no-repeat center;
+				background-size: 44px auto;
+			}
+		}
+
+		.mlogin_icon {
+			background-image: url(login_icon.png);	
+			background-repeat:  no-repeat;
+			background-size: 68px auto;
+			height: 20px;
+			line-height: 20px;
+			padding: 0px;
+			padding-left: 32px;
+			width: 87%;
+			border: 0;
+		}
+		.login_title {
+			font-size: 14px;
+			text-align: left;
+			margin-top: 32px;
+		}
+
+		.inner_user {
+			background-position: 10px 4px;
+		}
+		.inner_password {
+			background-position: 10px -42px;
+		}
+		.inner_email {
+			background-position: 10px -147px;
+		}
+		.inner_password_confirm {
+			background-position: 10px -199px;
+		}
+		.inner_btn {
+			margin-top: 11px;
+			height: 44px;
+			width: 100%;
+			line-height: 1;
+			background-color: #31343b;	
+			font-size: 16px;
+			border: 1px solid #31343b;
+			border-radius: 3px;
+			cursor: pointer;
+			color: #fff;
+			padding: 0;
+		}
+		.weibo {
+			margin-top: 30px;
+			.weiboBtn {
+				border: none;
+			}
+		}
+		.verheight {
+			margin-bottom: 11px;
+			background: #fff;
+			border: 1px solid #e2e5e7;
+			padding: 8px 0px;
+			clear: both;
+			border-radius: 3px;
+			.inner_vercode {
+				border: none;
+				float: left;
+				width: 64%;
+				margin-right: 2%;
+				background-position: 12px -249px;
+				display: inline-block;
+				padding-left: 35px;
+			}
+			img{width: auto; height: 18px;}
+			div {
+				float: left;
+				display: inline-block;
+			}
+		}
+		.code_error {
+			margin-top: 2px;
+			height: 30px;
+			.inner_error {
+				display: none;
+				border: none;
+				text-align: left;
+				line-height: 30px;
+				color: #ff0000;
+				padding-left: 32px;
+				background-position: 12px -91px;
+				background-color: #f7f7f7;
+			}
+		}
+	}
+
+}
+
+.part {
+	height: @height;	
+	width: 100%;
+	outline: none;
+	
+}
+
+.mlogin_inner .mContent .mobile_code {
+}
+#get_mobile_code {
+	position: relative;
+	top: -20px;
+	width: 100px;
+	float: right;
+	height: 20px;
+	background: #000;
+	border: none;
+	margin-right: 10px;
+	color: #fff;
+}
+
+.mlogin_footer {
+	height: 44px;
+	background-color: #fff;	
+	position: relative;
+	left: 0;
+	width: 100%;
+
+	.part_left {
+		float: left;
+		width: 50%;
+
+		.weibo {
+			display: block;
+			height: 44px;
+			background: url(weibo.png) no-repeat;
+			background-position: 50% 50%;
+			background-size: 90.5px auto;
+		}
+        .goreg {
+			background: url(sign.png) no-repeat;
+		}
+        .goreg1 {
+			background: url(sign1.png) no-repeat;
+		}
+		.goto {
+			display: block;
+			border-left: 1px solid #eceef1;
+			height: 44px;
+			background-position: 50% 50%;
+			background-size: 48px auto;
+		}
+	}
+	#alipay {
+		width: 100%;
+		float: none;
+	}
+	
+}
+
+#login_footer {
+	position: fixed;
+	bottom: 0;
+}

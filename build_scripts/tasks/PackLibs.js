@@ -14,19 +14,21 @@ const paths = config.paths;
  *
  */
 async function PackLibs() {
-    const jsFiles = glob.sync( path.join(paths.libs, 'js', '*.js') );
+    const jsFiles = glob.sync(path.join(paths.libs, 'js', '*.js'));
     const packedJsName = await PackJSCSS({
         packFiles: jsFiles,
         packType: 'js',
         outputName: 'libs_',
     });
 
-    const cssFiles = glob.sync( path.join(paths.libs, 'css', '*.*ss') );
+    const cssFiles = glob.sync(path.join(paths.libs, 'css', '*.*ss'));
     const packedCssName = await PackJSCSS({
         packFiles: cssFiles,
         packType: 'css',
         outputName: 'libs_',
     })
+
+    Helper.logCyan(`    - 打包 js/css \n`);
 
     return {js: packedJsName, css: packedCssName};
 }

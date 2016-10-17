@@ -1,0 +1,151 @@
+
+.post_temp_head .head_icon {
+	background-position: 16px -244px;
+	&.active, &:hover {
+		background-position: 16px -605px;
+	}
+}
+
+.temp_tools_wrap {
+	height: 600px;
+	background: #fff;
+	position: relative;
+	font-size: 14px;
+
+	.left_sidebar {
+		width: 100px;
+		height: 533px; 
+		float: left;
+		background: #f7f7f7;
+		color: #abb0bc;
+		padding-left: 50px;
+		padding-top: 67px;
+		div {
+			cursor: pointer;
+			margin-bottom: 13px;
+		}
+		.face_2 {
+			background-position: 37px -3758px;
+		}
+		.face_1 {
+			background-position: 37px -3814px;
+		}
+		.face_2.active {
+			background-position: 37px -3730px;
+		}
+		.face_1.active {
+			background-position: 37px -3786px;
+		}
+		.active {
+			color: #008cff;
+		}
+	}
+
+	.compare_two {
+		width: 100%;
+		padding-top: 46px;
+
+		.tool_currPhone {
+			width: 353px;
+			float: left;
+			margin-left: 135px;
+		}
+		.tool_compare {
+			float: left;
+
+			.compare_list {
+				top: -200px;
+			}
+		}
+	}
+
+	svg {
+		position: absolute;
+		top: 0;
+	}
+
+	.wrap_tab {
+		width: 970px;
+		height: 258px;
+		float: right;
+		background: #fff;
+		display: none;
+		box-shadow: none !important;
+		
+		.temp_chart {
+			left: 135px;
+		}
+	}
+
+	.temp_pic {
+		width: 835px;
+		height: 292px;
+		padding-top: 50px;
+		padding-left: 135px;
+		float: right;
+		background: #fff;
+
+		.pic_1 {
+			width: 320px;
+			height: 240px;
+			display: inline-block;
+			margin-right: 46px;
+			position: relative;
+			float: left;
+		}
+
+		.pic_2 {
+			width: 320px;
+			height: 240px;
+			display: inline-block;
+			position: relative;
+			float: left;
+		}
+
+		.pic_wrap {
+			width: 320px;
+			height: 240px;
+			background-repeat: no-repeat;
+		}
+		.pic_small {
+			width: 240px;
+		}
+
+		.pic_det {
+			display: none;
+		}
+
+		.pic_tip {
+			background: #000;
+			position: absolute;
+			text-align: center;
+			cursor: none;
+			color: #fff;
+			padding: 1px;
+			top: 0;
+			left: 0;
+		}
+
+		.pic_tip:before {
+			content: '';
+			position: absolute;
+			left: -26px;
+			top: 17px;
+			background: url(pointer.png);
+			width: 31px;
+			height: 33px;
+		}
+		
+		.pic_tip.hight:before {
+			background: url(pointer_black.png);
+		}
+	}
+	
+	.temp_chart_active {
+
+	}
+}
+
+
+
+

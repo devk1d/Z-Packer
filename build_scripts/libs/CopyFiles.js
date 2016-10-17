@@ -14,14 +14,11 @@ function CopyFiles(relativePath) {
     // 删除响应的 output 目录
     const rmPath = path.join(paths.output, relativePath);
     fs.removeSync(rmPath);
-    Helper.log('删除目录: ' + rmPath);
-
-    // 复制响应的 pages 目录
-    fs.ensureDirSync(paths.output);
+    Helper.logCyan(`    - 删除目录: ${rmPath}\n`);
 
     const cpPath = path.join(paths.pages, relativePath);
     fs.copySync(cpPath, path.join(paths.output, relativePath));
-    Helper.log('复制目录: ' + cpPath);
+    Helper.logCyan(`    - 复制目录: ${cpPath}\n`);
 }
 
 export default CopyFiles;

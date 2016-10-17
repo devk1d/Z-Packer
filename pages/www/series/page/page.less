@@ -1,0 +1,405 @@
+.global_header {
+	position: relative;
+}
+.wrap {
+	margin: 0;
+}
+.series_wrap {
+	background: #f2f2f2;
+}
+.series_nav {
+	display: none;
+}
+
+.series_ucBanner {
+	max-width: 1120px;
+	width: 100%;
+	display: block;
+	margin: 0 auto;
+}
+
+.series_head {
+	text-align: center;
+	h1 {
+		display: inline-block;
+		margin-top: 50px;
+		margin-bottom: 25px;
+		font-size: 24px;
+		color: #000;
+		line-height: 36px;
+		@media only screen and (max-width: 775px) {
+			margin-top: 25px;
+			font-size: 16px;
+			margin-bottom: 15px;
+			line-height: 20px;
+		}
+	}
+}
+
+.series_video {
+	background: #f2f2f2;
+	.video_player {
+		max-width: 1120px;
+		//height: 630px;
+		margin: 0 auto;
+	}
+	.video_playerOnline {
+		max-width: 1120px;
+		margin: 0 auto;
+	}
+	.video_playNone {
+		max-width: 1120px;
+		margin: 0 auto;
+		img {
+			width: 100%;
+		}
+	}
+	.video_onlineLink {
+		display: none;
+		max-width: 1120px;
+		margin: 0 auto;
+		color: #ef503f;
+		font-size: 13px;
+		text-align: right;
+		text-decoration: underline;
+	}
+	.pclink_panda {
+		display: block;
+	}
+	.series_share {
+		height: 65px;
+		margin-top: 37px;
+		.share_wrap {
+			width: 202px;
+			margin: 0 auto;
+		}
+		.series_shareIcons {
+			width: 66px;
+			height: 28px;
+			display: block;
+			cursor: pointer;
+			float: left;
+			border-right: 1px solid #ddd;
+			&.wechat {
+				background-position: -77px -521px;
+			}
+			&.weibo {
+				background-position: 18px -521px;
+			}
+			&:last-child {
+				border-right: none;	
+				background-position: -205px -616px;
+			}
+		}
+	}
+}
+
+.container_title_line {
+	border-bottom: 1px solid #000;
+	position: relative;
+	bottom: -10px;
+	z-index: 2
+}
+.container_title {
+	width: 240px;
+	font-size: 22px;
+	color: #000;
+	margin: 0 auto;
+	background: #ffffff;
+	z-index: 3;
+	position: relative;
+	text-align: center;
+	line-height: 20px;
+	margin-bottom: 50px;
+	@media only screen and (max-width: 775px) {
+		width: 150px;
+		font-size: 14px;
+		margin-bottom: 25px;
+	}
+}
+
+.series_pic {
+	background: #ffffff;
+	.pic_container {
+		max-width: 1120px;
+		padding-top: 76px;
+		margin: 0 auto;
+		@media only screen and (max-width: 775px) {
+			padding-top: 30px;
+		}
+	}
+	.pic_bpic {
+		margin-bottom: 20px;
+		li {
+			width: 49.5%;
+			&.bpic_item0 {
+				margin-right: 1%; 
+			}
+		}
+		@media only screen and (max-width: 775px) {
+			margin-bottom: 10px;
+			li {
+				width: 100%;
+				&.bpic_item0 {
+					margin-right: 0; 
+					margin-bottom: 10px;
+				}
+			}
+		}
+	}
+
+	.pic_spic {
+		margin-bottom: 20px;
+		li {
+			width: 33%;
+			&.spic_item0, &.spic_item1 {
+				margin-right: 0.5%; 
+			}
+			@media only screen and (max-width: 775px) {
+				width: 49.5%;
+				&.spic_item0  {
+					margin-right: 1%; 
+				}
+				&.spic_item1 {
+					margin-right: 0;
+				}
+				&.spic_item2 {
+					display: none;
+				}
+			}
+		}
+	}
+	li {
+		float: left;
+		position: relative;
+		img {
+			width: 100%;
+			display: block;
+		}
+		.pic_tag {
+			position: absolute;
+			top: -34px;
+			left: 18px;
+			font-size: 24px;
+			width: 36px;
+			height: 36px;
+			border: 3px solid #000;
+			text-align: center;
+			line-height: 36px;
+		}
+	}
+}
+
+.series_plus, .series_news, .series_app, .series_review, .series_footer, .series_partner {
+	background: #fff;
+	.plus_container, .title_wrap {
+		max-width: 1120px;
+		padding-top: 76px;
+		margin: 0 auto;
+		@media only screen and (max-width: 775px) {
+			padding-top: 30px;
+		}
+	}
+	.plus_title {
+		height: 235px;
+		background: #000;
+		.title_main {
+			color: #ffffff;
+			font-size: 22px;
+			line-height: 22px;
+			margin-top: 58px;
+			display: inline-block;
+			margin-bottom: 24px;
+		}
+		.title_sub {
+			color: #999999; 
+			font-size: 14px;
+			line-height: 14px;
+		}
+	}
+	li {
+		float: left;
+		width: 23.5%;
+		margin-right: 2%;
+		&.list_item3 {
+			margin-right: 0;
+		}
+		img {
+			display: block;
+			width: 100%;
+		}
+		@media only screen and (max-width: 775px) {
+			width: 49.5%;
+			margin-right: 1%; 
+			&.list_item1, &.list_item3 {
+				margin-right: 0;
+			}
+		}
+	}
+	.plus_list {
+		.plus_itemTitle {
+			font-size: 18px;
+			margin-top: 10px;
+			line-height: 30px;
+			white-space: nowrap;
+			overflow: hidden;
+			text-overflow: ellipsis;
+		}
+		.plus_sepLine {
+			height: 1px;
+			width: 23px;
+			background: #000;
+		}
+		.plus_total {
+			font-size: 13px;
+			color: #999999;
+			line-height: 45px; 
+		}
+		@media only screen and (max-width: 775px) {
+			.plus_itemTitle {
+				margin-top: 0;
+				font-size: 13px;
+			}
+			.plus_total {
+				font-size: 11px;
+				line-height: 22px; 
+			}
+		}
+	}
+}
+
+.series_review {
+	//padding-bottom: 100px;
+}
+
+.series_nbsp {
+	background: #fff;
+	padding-top: 76px;
+}
+
+.series_recom {
+	background: #ffffff;
+
+	.buy_container {
+		max-width: 1120px;
+		padding-top: 76px;
+		margin: 0 auto;
+	}
+	li {
+		float: left;
+		width: 23.5%;
+		margin-right: 2%;
+
+		&.list_item3 {
+			margin-right: 0;
+		}
+		img {
+			display: block;
+			width: 100%;
+		}
+		.buy_itemTitle {
+			font-size: 18px;
+			color: #000;
+			line-height: 30px;
+			margin-top: 35px;
+			white-space: nowrap;
+			overflow: hidden;
+			text-overflow: ellipsis;
+		}
+		.buy_price {
+			color: #ff0000; 
+			font-size: 26px;
+			line-height: 36px;
+			margin-top: 10px;
+			margin-bottom: 28px;
+		}
+		.buy_buyBtn {
+			line-height: 40px;
+			font-size: 16px;
+			text-align: center;
+			background: #03c4d5;
+			color: #ffffff;
+			display: block;
+			&:hover {
+				background: #00d7ea;
+			}
+		}
+		@media only screen and (max-width: 775px) {
+			width: 49.5%;
+			margin-right: 1%; 
+			margin-bottom: 10px;
+			&.list_item1, &.list_item3 {
+				margin-right: 0;
+			}
+			.buy_itemTitle {
+				font-size: 12px;
+				line-height: 15px;
+				margin-top: 17px;
+			}
+			.buy_price {
+				font-size: 13px;
+				line-height: 18px;
+				margin-top: 5px;
+				margin-bottom: 14px;
+			}
+			.buy_buyBtn {
+				line-height: 25px;
+				font-size: 13px;
+			}
+		}
+	}
+}
+
+// 合作伙伴, 一张图
+.series_partner, .series_footer {
+	background: #fff;
+}
+.partner_container, .footer_container {
+	max-width: 1120px;
+	margin: 0 auto;
+	img {
+		width: 100%;
+	}
+}
+
+// 移动端样式
+@media only screen and (max-width: 775px) {
+	.series_wrap {
+		margin-top: 44px;
+	}
+	/* 因iphone7 活动需要,移动端隐藏分享 */
+	.series_share {
+		display: none;
+	}
+	.series_video  {
+		.pclink_panda {
+			display: none;
+		}
+		.hlink_panda {
+			display: block;
+		}
+	}
+}
+
+.mask_wechat {
+	height: 360px;
+	text-align: center;
+	font-size: 14px;
+	.inner_box {
+		padding: 22px 0 0 0;
+	}
+	.wechat_tit {
+		text-align: center;
+		margin: 0 auto 10px auto;
+	}
+	.wechat_bot {
+		height: 60px;
+		font-size: 12px;
+		color: #31343b;
+		margin-top: 26px;
+		border-top: 1px solid #eceef1;
+		padding-top: 18px;
+		
+	}
+}
+

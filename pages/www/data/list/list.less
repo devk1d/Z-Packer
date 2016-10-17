@@ -1,0 +1,432 @@
+@gray: #eceef1;
+@blue: #0091ff;
+@black: #31343b;
+
+body {
+	background: #fff;
+}
+.global_header {
+	display: block;
+	.account_user {
+		.img_link {
+			margin-top: 15px;
+		}
+	}
+}
+
+.wrap_phone {
+	width: 1120px;
+	overflow: hidden;
+	margin: 0 auto;
+
+	.phone_choose {
+		h2 {
+			font-size: 24px;
+			line-height: 80px;
+			color: @blue;
+		}
+		.choose_content {
+			width: 1118px;
+			border: 1px solid @gray;
+			overflow: hidden;
+
+			.content_company, .content_system{
+				clear: both;
+				font-size: 14px;
+				margin-left: 20px;
+				margin-right: 20px;
+				padding-bottom: 18px;
+
+				h3 {
+					font-size: 14px;
+					float: left;
+					line-height: 22px;
+					margin: 18px 0 0 0px;
+				}
+				a {
+					line-height: 22px;
+					float: left;
+					margin: 18px 22px 0 20px;
+					padding: 0 5px;
+					cursor: pointer;
+				}
+				.active {
+					color: #fff;
+					background: @blue;
+				}
+				.content_show {
+					width: 87%;
+					float: left;
+
+					a {
+						float: left;
+						padding: 0 5px;
+						margin: 18px 22px 0 0;
+						cursor: pointer;
+					}
+					.no_click {
+						display: none;
+						color: @gray;
+					}
+				}
+			}
+			.content_company {
+				border-bottom: 1px solid @gray;
+			}
+			.content_sort {
+				border-top: 1px solid @gray;
+
+				ul {
+					float: left;
+					
+					.sort_down {
+						background-image: url(sort_down.png);
+					}
+					.sort_up {
+						background-image: url(sort_up.png);
+					}
+
+					li {
+						width: 92px;
+						line-height: 50px;
+						float: left;
+						text-align: right;
+						border-right: 1px solid @gray;
+						padding-right: 48px;
+						cursor: pointer;
+						background-image: url(sort_no.png);
+						background-repeat: no-repeat;
+						background-position: 96px 20px;
+					}
+				}
+				.sort_num {
+					float: right;
+					line-height: 50px;
+					margin-right: 20px;
+					
+					span {
+						color: @blue;
+					}
+				}
+			}
+		}
+	}
+	.phone_str {
+		font-size: 14px;
+		color: #abb0bc;
+		line-height: 39px;
+		padding: 10px 0;
+	}
+	.phone_list {
+		margin-bottom: 60px;
+		position: relative;
+
+		.list_li {
+			width: 1118px;
+			height: 218px;
+			border: 1px solid @gray;
+			margin-bottom: 20px;
+			overflow: hidden;
+			clear: both;
+			position: relative;
+
+			.li_bg {
+				width: 80px;
+				height: 100%;
+				background: #fff;
+				position: absolute;
+				z-index: 5;
+				top: 0;
+				left: 0;
+			}
+
+			.li_checkbox {
+				width: 18px;
+				height: 18px;
+				float: left;
+				border: 1px solid @gray;
+				margin: 99px 19px 0 19px;
+				cursor: pointer;
+				position: relative;
+				z-index: 10;
+
+				.checkbox_on {
+					width: 100%;
+					height: 100%;
+					background-position: 2px -92px;
+					display: none;
+				}
+			}
+			.checkbox_no {
+				background: @gray;
+				cursor: default;
+			}
+			.list_content {
+				width: 260px;
+				height: 100%;
+				float: left;
+				border-left: 1px solid @gray;
+				background-color: #fff;
+				position: relative;
+				z-index: 10;
+
+				.content_img {
+					width: 260px;
+					height: 100%;
+					float: left;
+					position: relative;
+					
+					img {
+						width: 100%;
+					}
+
+					span {
+						width: 180px;
+						height: 10px;
+						position: absolute;
+						top: 0;
+						left: 50%;
+						z-index: -1;
+						margin-left: -90px;
+						box-shadow: 0 170px 30px #abb0bc;
+					}
+				}
+			}
+			.list_configure {
+				width: 760px;
+				height: 210px;
+				float: left; 
+				margin-top: 8px;
+
+				h2 {
+					float: left;
+					font-size: 20px;
+					line-height: 52px;
+					color: @black;
+				}
+				.configure_price {
+					float: right;
+					line-height: 52px;
+					font-size: 20px;
+					color: #ff4d5b;
+				}
+				.configure_price_logo {
+					float: right;
+					font-size: 12px;
+					color: #ff4d5b;
+					margin-top: 20px;
+				}
+				.configure_sell {
+					line-height: 18px;
+					font-size: 16px;
+					color: #abb0bc;
+					float: left;
+					clear: both;
+					padding: 4px 0 10px 0;
+				}
+				.configure_content {
+					width: 760px;
+					float: left;
+					clear: both;
+
+					li {
+						float: left;
+						p {
+							line-height: 32px;
+							color: #abb0bc;
+							font-size: 14px;
+						}
+					}
+					.content_more {
+						width: 80px;
+						float: right;
+						text-align: right;
+
+						a {
+							font-size: 14px;
+							color: @blue;
+							&:hover {
+								text-decoration: underline;
+							}
+						}
+					}
+				}
+			}
+			.list_compare {
+				width: 760px;
+				height: 218px;
+				background: #fff;
+				position: absolute;
+				top: 0;
+				left: -760px;
+				z-index: 2;
+				
+				.compare_btn {
+					margin-top: 5px;
+					border-bottom: 1px solid @gray;
+
+					ul {
+						margin-left: 180px;
+
+						li {
+							width: 100px;
+							float: left;
+							font-size: 14px;
+							line-height: 44px;
+							color: #abb0bc;
+							text-align: center;
+							margin-bottom: -1px;
+							cursor: pointer;
+
+							&.active {
+								color: @blue;
+								border-bottom: 1px solid @blue;
+							}
+						}
+					}
+				}
+				.compare_tab {
+					width: 100%;
+					height: 140px;
+					background: #fff;
+					position: absolute;
+					display: none;
+					top: 50px;
+					left: 0;
+					padding-top: 19px;
+
+					li {
+						margin-bottom: 20px;
+
+						p {
+							width: 180px;
+							font-size: 14px;
+							color: #757e91;
+							line-height: 100%;
+							float: left;
+						}
+						.tab_process {
+							width: 500px;
+							height: 20px;
+							background: @blue;
+							float: left;
+							position: relative;
+							overflow: hidden;
+
+							span {
+								width: 100%;
+								height: 100%;
+								background: @gray;
+								position: absolute;
+								top: 0;
+								left: 0;
+							}
+						}
+						.tab_percent {
+							color: @blue;
+							font-size: 14px;
+							line-height: 20px;
+							float: right;
+						}
+					}
+				}
+			}
+		}
+	}
+
+	.phone_load {
+		width: 100%;
+		height: 200px;
+		position: relative;
+		display: none;
+	}
+
+	.phone_compare {
+		width: 140px;
+		height: 380px;
+		position: fixed;
+		background: #fff;
+		border: 1px solid @gray;
+		top: 50%;
+		right: -142px;
+		margin-top: -190px;
+		z-index: 999;
+
+		p {
+			font-size: 16px;
+			color: #31343b;
+			text-align: center;
+			line-height: 59px;
+			border-bottom: 1px solid @gray;
+		}
+		ul {
+			padding: 20px 20px 0 20px;
+			
+			li {
+				width: 98px;
+				height: 98px;
+				border: 1px solid @gray;
+				margin-bottom: 20px;
+				position: relative;
+				overflow: hidden;
+				
+				img {
+					width: 100%;
+					display: none;
+				}
+				.compare_del {
+					width: 100%;
+					height: 100%;
+					background: #000;
+					opacity: 0.8;
+					filter: alpha(opacity=80);
+					color: #fff;
+					position: absolute;
+					text-align: center;
+					font-size: 14px;
+					line-height: 98px;
+					cursor: pointer;
+					display: none;
+					top: 0;
+					left: 0;
+				}
+			}
+		}
+		.compare_go {
+			width: 100px;
+			height: 40px;
+			position: absolute;
+			left: 20px;
+			bottom: 20px;
+			background: @blue;
+			color: #fff;
+			text-align: center;
+			line-height: 40px;
+		}
+	}
+}
+
+/*Retina  images*/
+@media only screen and (-webkit-min-device-pixel-ratio:2),
+only screen and (min-device-pixel-ratio:2){
+	/*LOGO*/
+	.wrap_phone .phone_choose .choose_content .content_sort ul li {
+		width: 92px;
+		line-height: 50px;
+		float: left;
+		text-align: right;
+		border-right: 1px solid @gray;
+		padding-right: 48px;
+		cursor: pointer;
+		background-image: url(sort_no2x.png);
+		background-repeat: no-repeat;
+		background-position: 96px 20px;
+		background-size: 8px 12px;
+	}
+	.wrap_phone .phone_choose .choose_content .content_sort ul .sort_down {
+		background-image: url(sort_down2x.png);
+	}
+	.wrap_phone .phone_choose .choose_content .content_sort ul .sort_up {
+		background-image: url(sort_up2x.png);
+	}
+}

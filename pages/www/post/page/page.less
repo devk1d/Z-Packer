@@ -1,0 +1,397 @@
+.header_inner {
+	.account_nav {
+		display: block;
+	}
+	.account_wrap {
+		border-bottom: none;
+	}
+	.nav_wrap {
+		display: none;
+	}
+	.account_search {
+		display: block;
+	}
+}
+
+.page_header {
+	display: block;
+}
+.wrap {
+	margin: 0 auto;
+	.page_header {
+		width: 100%;
+		height: 40px;
+		background: #1a1a1a;
+		.header_inner {
+			width: 1120px;
+			height: 40px;
+			margin: 0 auto;
+			position: relative;
+			.inner_nav {
+				font-size: 0;
+				float: left;
+				.nav_arrow {
+					width: 12px;
+					height: 5px;
+					background: url(media_header.png) -158px 0 no-repeat;
+					position: absolute;
+					left: 56px;
+					bottom: 0;
+				}
+				a {
+					height: 40px;
+					font-size: 12px;
+					line-height: 40px;
+					color: #fff;
+					float: left;
+					margin-right: 25px;
+				}
+			}
+			.inner_account {
+				float: right;
+				color: #fff;
+				line-height: 40px;
+				.account_message {
+					width: 50px;
+					float: left;
+					text-align: center;
+				}	
+				.account_letter {
+					width: 100px;
+					float: left;
+					text-align: center;
+				}
+				.account_user {
+					width: 50px;
+					height: 40px;
+					float: left;
+					cursor: pointer;
+
+					.user_link {
+						width: 30px;
+						height: 30px;
+						border-radius: 15px;
+						vertical-align: middle;
+						display: inline-block;
+						overflow: hidden;
+						background: #fff;
+						.user_img {
+							width: 30px;
+							height: 30px;
+							border-radius: 15px;
+						}
+					}
+					.user_arrow {
+						width: 8px;
+						height: 4px;
+						float: right;
+						margin-top: 18px;
+						background: url(media_header.png) -158px -5px no-repeat;
+					}
+
+				}
+			}
+		}
+	}
+
+	#main {
+		background: #fff;
+		.media_content_news {
+			width: 100%;
+			margin: 60px auto 0 auto;
+			
+		}
+		.media_content {
+			width: 100%;
+			margin: 60px auto 0 auto;
+			.video_post_news {
+				width: 100%;
+				height: auto;
+				margin-top: 42px;
+				.news_inner {
+					width: 1070px;
+					min-height: 330px;
+					background: #fff;
+					margin: 0 auto;
+					padding: 20px 0 0px 50px;
+				}
+
+			}
+			.content_video {
+				width: 100%;
+				padding-top: 16px;
+				margin: 0 auto;
+				background: #f2f2f2;
+				padding-bottom: 50px;	
+
+				.video_nav {
+					width: 1120px;
+					margin: 0 auto;
+					font-size: 14px;
+					line-height: 16px;
+					margin-bottom: 16px;
+					color: #999999;
+					a {
+						color: #999999;
+					}
+					.nav_curr {
+						color: #666666;
+					}
+				}
+				.video_title {
+					width: 1120px;
+					height: 22px;
+					margin: 0 auto 21px auto;
+					h1 {
+						height: 22px;
+						line-height: 22px;
+						font-size: 22px;
+						color: #333;
+						float: left;
+						font-weight: normal;
+					}
+					.title_share {
+						width: 124px; 
+						float: right;
+
+						.postIcons {
+							width: 25px;
+							height: 22px;
+							float: left;
+							margin-left: 16px;
+							background: url(share_icon.png) no-repeat;
+						}
+						.wechat {
+						}
+						.wechat:hover {
+							background-position: 0 -22px;
+						}
+						.weibo {
+							background-position: -25px 0;
+						}
+						.weibo:hover {
+							background-position: -25px -22px;
+						}
+						.qzone {
+							background-position: -50px 0;
+						}
+						.qzone:hover {
+							background-position: -50px -22px;
+						}
+					}
+				}
+				.video_post {
+					width: 100%;
+					.post_player {
+						width: 1120px;
+						margin: 0 auto;
+					}
+				}
+			}
+			.content_more {
+				width: 100%;
+				.post_description {
+					width: 1120px;
+					margin: 0 auto;
+					margin-top: 36px;
+					.des_title {
+						font-size: 16px;
+						margin-bottom: 4px;
+					}
+					.des_content {
+						color: #666;
+						font-size: 14px;
+						line-height: 25px;
+					}
+				}
+				.more_side {
+					width: 1120px;
+					margin: 0 auto;
+					.side_left {
+						width: 780px;
+						float: left;
+						.item {
+						}
+						.post_commentTotal {
+							color: #31343b;
+							font-size: 16px;
+							line-height: 30px; 
+							margin-bottom: 20px;
+							margin-top: 20px;
+							word-wrap: break-word;
+						}
+						.cmWrap {
+							//增加第三方登录
+							.no_login_toReply {
+								border: 1px solid #e5e6e8;
+								height: 100px;
+								line-height: 40px;
+								text-align: center;
+								padding-top: 70px;
+								margin-top: 20px;
+								span {
+									margin-left: 135px;
+									display: inline-block;
+									height: 40px;
+									line-height: 40px;
+									float: left;
+								}
+								.is_login {
+									color: #fe6649;
+								}
+								.qq_login, .weibo_login, .wechat_login {
+									margin-left: 20px;
+									display: inline-block;
+									width: 110px;
+									height: 40px;
+									background: url(login_method.png);
+									background-position: 0 0;
+									float: left;
+									&:hover {
+										background-position: 0 -72px;
+									}
+								}
+								.weibo_login {
+									background-position: -118px 0;
+									&:hover {
+										background-position: -118px -72px;
+									}
+								}
+								.wechat_login {
+									background-position: -256px 0;
+									&:hover {
+										background-position: -256px -72px;
+									}
+								}
+							}
+							.user_comment {
+								.user_card {
+									width: 50px;	
+									height: 50px;
+									border-radius: 25px;
+									overflow: hidden;
+									background: #000;
+									float: left;
+									margin: 0px 25px 0 5px;
+								}
+								#post_new_reply {
+									width: 700px;
+									float: left;
+									.comment_btn {
+										width: 120px;
+										height: 40px;
+										line-height: 40px;
+										font-size: 16px;
+										border: none;
+										padding: 0;
+										text-align: center;
+										background: #111;
+										color: #fff;
+										cursor: pointer;
+										float: right;
+										margin-top: 20px;
+									}
+								}
+							}
+						}
+					}
+					.side_right {
+						width: 300px;
+						float: right;
+						
+						.right_tag {
+							a {
+								height: 28px;
+								line-height: 28px;
+								float: left;
+								padding: 0 14px;
+								border: 1px solid #e6e6e6;
+								margin-right: 10px;
+								margin-top: 20px;
+								color: #31343b;
+							}
+						}
+						h3 {
+							height: 30px;
+							clear: both;
+							font-size: 16px;
+							line-height: 30px;
+							color: #31343b;
+							margin-top: 20px;
+						}
+						.right_recommend {
+							width: 100%;
+							li {
+								width: 100%;
+								height: 150px;
+								margin-bottom: 20px;
+								position: relative;
+								a {
+									img {
+										width: 300px;
+										height: 150px;
+									}
+									.recommend_cover {
+										width: 300px;
+										height: 150px;
+										position: absolute;
+										top: 0;
+										left: 0;
+										background: #000;
+										opacity: 0;
+										filter: alpha(opacity=0);
+									}
+									.recommend_title {
+										width: 300px;
+										height: 150px;
+										position: absolute;
+										top: 0;
+										left: 0;
+										text-align: center;
+										font-size: 14px;
+										line-height: 150px;
+										color: #fff;
+										opacity: 0;
+										filter: alpha(opacity=0);
+									}
+								}
+							}
+						}
+						.right_relation {
+							font-size: 14px;
+							color: #666666;
+							margin-bottom: 15px;
+							> li {
+								line-height: 26px;
+							}
+						}
+					}
+				}
+			}
+		}
+
+		
+
+	}
+}
+.mask_wechat {
+	height: 360px;
+	text-align: center;
+	font-size: 14px;
+	.inner_box {
+		padding: 22px 0 0 0;
+	}
+	.wechat_tit {
+		text-align: center;
+		margin: 0 auto 10px auto;
+	}
+	.wechat_bot {
+		height: 60px;
+		font-size: 12px;
+		color: #31343b;
+		margin-top: 26px;
+		border-top: 1px solid #eceef1;
+		padding-top: 18px;
+		
+	}
+}

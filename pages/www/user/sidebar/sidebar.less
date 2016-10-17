@@ -1,0 +1,88 @@
+
+.left_logo {
+	position: absolute;
+	top: -2px;
+	left: -8px;
+	width: 0px;
+	height: 0px;
+	border-bottom: 8px solid #000;
+	border-left: 8px solid transparent;
+}
+.user_pic {
+	margin: 0 auto;
+	margin-top: 30px;
+	margin-bottom: 20px;	
+	position: relative;	
+	a {
+		display: block;	
+	}
+	a, img {
+		width: 80px;
+		height: 80px;
+		border-radius: 80px;
+		margin: 0 auto;
+		display: block;
+		
+	}
+	.user_cover {
+		display: none;
+		position: absolute;	
+		left: 50%;
+		top: 50%;
+		margin-left: -40px;
+		margin-top: -40px;
+		text-align: center;
+		line-height: 80px;
+		color: #fff;
+		font-size: 14px;
+		background-color: #000;
+		opacity: 0.8;	
+	}
+	&:hover {
+		.user_cover {
+			display: block;	
+		}
+	}
+}
+.left_list {
+	text-align: center;	
+	dt {
+		font-size: 18px;
+		height: 26px;
+		line-height: 26px;
+		color: #31343b;
+		margin: 7px 0 5px 0;
+	}
+	dd {
+		font-size: 0;
+		a {
+			width: 210px;
+			height: 40px;
+			line-height: 40px;
+			font-size: 16px;
+			color: #999;
+			display: inline-block;
+			span {
+				display: none;	
+			}
+		}
+		.sidebar_active {
+			color: #333;
+			position: relative;	
+			span {
+				width: 10px;
+				height: 0px;
+				display: inline-block;
+				border-bottom: 1px solid #000;	
+				position: absolute;	
+				top: 20px;	
+			}
+			.left {
+				left: 50px;	
+			}
+			.right {
+				right: 50px;	
+			}
+		}
+	}
+}

@@ -1,0 +1,148 @@
+#comments{
+	width: 780px;
+	.comments_list {
+		ul {
+			li {
+				font-size: 14px;
+				.list_card {
+					width: 50px;
+					height: 50px;
+					border-radius: 25px;
+					float: left;
+					margin: 36px 25px 0 5px;
+					overflow: hidden;
+					img {
+					}
+				}
+				.list_wrap {
+					width: 700px;
+					float: left;
+					dl {
+						dt {
+							width: 300px;
+							height: 14px;
+							line-height: 14px;
+							margin-top: 33px;
+							display: inline-block;
+							color: #333;
+							.mb_name {
+								span {
+									color: #333;
+								}
+							}
+							span {
+								color: #b4b4b4;
+							}
+						}
+						dd {
+						    overflow: hidden;
+							color: #31343b;
+							line-height: 24px;
+							blockquote {
+								background: #f7f8f8;
+								border: none;
+								color: #8b8b8b;
+								margin: 0;
+								padding: 20px;
+								.zealer {
+									color: #8b8b8b;
+								}
+								p {
+									color: #8b8b8b;
+								}
+							}
+							p { 
+								margin-top: 10px;
+							}
+						}
+						.cmt_info {
+							height: 16px;
+							float: right;
+							line-height: 16px;
+							font-size: 14px;
+							cursor: pointer;
+							margin-top: 9px;
+							span {
+								height: 16px;
+								color: #575d6a;
+								text-align: center;
+								a {
+									color: #575d6a;
+								}
+							}
+							.reply {
+								padding-left: 14px;
+								border-left: 1px solid #e6e6e6;
+							}
+							.info_del {
+								padding-right: 15px;
+								border-right: 1px solid #e6e6e6;
+								color: #748A95;
+								margin-right: 15px;
+							}
+							.appro {
+								padding-right: 10px;
+								.info_appro {
+									color: #575d6a;
+								}
+								.info_appro_active {
+									color: #ed1c24;
+								}
+								
+							}
+							
+							.info_reply {
+								color: #748A95;
+								margin-left: 14px;
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}
+.cmtList .pic {
+	float: left;
+	width: 50px;
+	height: 50px;
+	margin-right: 25px;
+	background: #fff;
+	position: relative;
+    img {
+		border-radius: 50px;
+		width: 50px;
+		height: 50px;
+	}
+
+	a {
+		display: none;
+		position: absolute;
+		top: 0;
+		left: 0;
+
+		.user_cover_icon {
+			position: absolute;
+			top: 12px;
+			left: 11px;
+			width: 28px;
+			height: 25px;
+			background: url(mail.png);
+			opacity: 1;
+			display: block;
+			z-index: 1;
+		}
+
+		.user_cover {
+			position: absolute;
+			top: 0;
+			width: 50px;
+			height: 50px;
+			border-radius: 50px;
+			background: #000;
+			opacity: 0.4;
+			display: block;
+		}
+	}
+}
+

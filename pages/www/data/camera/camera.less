@@ -1,0 +1,543 @@
+.post_camera_head .head_icon {
+	cursor: pointer;
+	background-position: 11px -92px;;
+	&.active, &:hover {
+		background-position: 11px -451px;;
+	}
+}
+.camera_tools_wrap {
+	color: #fff;
+	.wrap_tab {
+		display: none;
+		&.active {
+			display: block;
+		}
+	}
+}
+
+.camera_tools_scale {
+	padding: 35px 0 15px 96px;
+}
+
+
+.camera_area_chart {
+	position: relative;
+}
+.area_chart_wrap .time_option {
+	top: 0;
+}
+
+
+.camera_compare_wrap {
+	height: 600px;
+	position: relative;
+	background: #fff;
+
+	.light_select {
+		width: 150px;
+		height: 520px;
+		overflow: hidden;
+		float: left;
+		font-size: 0;
+		background: #f7f7f7;
+		padding-top: 80px;
+
+		a {
+			width: 81px;
+			display: inline-block;
+			padding-left: 34px;
+			font-size: 14px;
+			line-height: 19px;
+			color: #abb0bc;
+			background: url(camera_icons.png) 60px -350px no-repeat;
+		}
+		span {
+			width: 1px;
+			height: 196px;
+			background: #e2e5e7;
+			margin-left: 77px;
+			display: inline-block;
+		}
+		a.active {
+			color: #008cff;
+		}
+	}
+
+	.left_w {
+		width: 970px;
+		position: relative;
+		float: left;
+		padding-top: 80px;
+
+		.big_pic {
+			width: 600px;
+			height: 450px;
+			float: left;
+			position: relative;
+			margin: 0 30px 0 40px;
+			background-repeat: no-repeat;
+		}
+		.handler {
+			width: 54px;
+			height: 39px;
+			border: 3px solid #05e88e;
+			display: inline-block;
+			position: absolute;
+			cursor: pointer;
+		}
+	}
+
+	.pic_1, .pic_2 {
+		width: 260px;
+		height: 195px;
+		overflow: hidden;
+		float: left;
+		margin-right: 30px;
+		position: relative;
+	}
+	
+	.phone_exif {
+		width: 260px;
+		height: 30px;
+		float: left;
+		position: relative;
+		
+		.exif {
+			width: 47px;
+			height: 100%;
+			border-radius: 1px;
+			color: #31343b;
+			background: url(camera_icons.png) 25px -4px no-repeat;
+			float: right;
+			line-height: 30px;
+			margin: 0 10px 0 0 ;
+			cursor: pointer;
+			position: relative;
+			z-index: 11;
+		}
+		.detail {
+			width: 147px;
+			height: 105px;
+			padding: 10px 0 0 16px;
+			background: #000;
+			opacity: 0.7;
+			filter: alpha(opacity=70);
+			position: absolute;
+			right: 0px;
+			bottom: 5px;
+			z-index: 10;
+			display: none;
+			div {
+				line-height: 19px;
+				padding-left: 27px;
+				font-size: 14px;
+				color: #fff;
+			}
+		}
+	}
+
+	.pic_1 ul, .pic_2 ul {
+		width: 322px;
+		position: absolute;
+		top: 0;
+		left: 0;
+		overflow: hidden;
+		li{
+			float: left;
+			width: 260px;
+			height: 195px;
+			background-image: url(pic_bg.png);
+			/*background-size: 250px 190px;*/
+		}
+	}
+	.compare_list {
+		position: absolute;
+		top: 0;
+	}
+	
+}
+
+.camera_chart_wrap {
+	height: 600px;
+	position: relative;
+	.alert_dom {
+		position: absolute;
+		color: #abb0bc;
+		top: 5px;
+		left: 150px;
+	}
+
+	.smooth_slide {
+		transition: all ease 1s;
+	}
+
+	.chart_opt {
+		width: 150px;
+		float: left;
+		padding-top: 62px;
+		background: #f7f7f7;
+
+		
+
+		.type_select {
+			width: 100%;
+			overflow: hidden;
+
+			a {
+				width: 83px;
+				float: left;
+				color: #abb0bc;
+				font-size: 14px;
+				line-height: 36px;
+				padding-right: 67px;
+				text-align: right;
+				background: url(camera_icons.png) 82px -633px no-repeat;
+			}
+			.active {
+				color: #1763a7;
+			}
+		}
+
+		
+	}
+	.slide {
+		height: 100%;
+		position: relative;
+		
+		.slide_handler {
+			width: 100%;
+			position: absolute;
+			top: 100%;
+
+			div {
+				float: left;
+				width: 74px; 
+				height: 1px;
+				background: #e2e5e7;
+			}
+
+			.middle {
+				width: 140px;
+				height: 24px;
+				background: #e2e5e7;
+				color: #000;
+				font-size: 14px;
+				padding: 4px 0;
+				margin-top: -17px;
+				text-align: center;
+				border: 1px solid #e2e5e7;
+				opacity: 0.96;
+				filter: alpha(opacity=96);
+			}
+		}
+		.scale {
+			width: 35px;
+			position: absolute;
+			left: -50px;
+			color: #abb0bc;
+			font-size: 11px;
+			text-align: right;
+			
+			div {
+				position: absolute;
+				right: -15px;
+				top: 50%;
+				width: 7px;
+				height: 1px;
+				background: #abb0bc;
+			}
+		}
+	}
+
+	.camera_chart {
+		width: 150px;
+		position: absolute;
+		margin-bottom: 20px;
+		bottom: 0px;
+
+		.line_chart {
+			width: 50px !important;
+			padding-left: 45px;	
+			margin-left: 62px;
+
+			.tipper {
+				width: 19px;
+				height: 19px;
+				background: url(camera_icons.png) -8px -948px no-repeat;
+				border: none;
+				cursor: default;
+				padding: 0;
+				margin: 0;
+				display: block !important;
+				&:after {
+					display: none;
+				}
+			}
+
+			.lineY {
+				background: #abb0bc;
+				font-size: 11px;
+
+				div:after {
+					width: 9px;
+					background: #abb0bc;
+					right: -17px;
+				}
+			}
+		}
+		&:after {
+			content: "Lux";
+			color: #abb0bc;
+			margin-left: 96px;
+			font-size: 11px;
+			line-height: 48px;
+		}
+	}
+
+	.chart_pic {
+		width: 485px;
+		height: 500;
+		float: left;
+		background: #fff;
+		padding-top: 32px;
+
+		.camera_slide {
+			width: 290px;
+			height: 500px;
+			position: relative;
+			float: right;
+			margin-right: 57px;
+			background: url(jiexili_h.jpg);
+			img, canvas {
+				position: absolute;
+				top: 0;
+			}
+			canvas {
+				display: none;
+			}
+		}
+	}
+	.compare_two {
+		width: 970px;
+		height: 20px;
+		float: right;
+		background: #fff;
+		padding: 28px 0 20px 0;
+		
+		.tool_currPhone {
+			width: 464px;
+			height: 48px;
+			margin-left: 139px;
+		}
+		.compare_list {
+			top: 0px;
+		}
+	}
+}
+
+
+.camera_tools_wrap .detail div {
+	background: url(exif.png) no-repeat 0 3px;
+	padding-left: 28px;
+}
+.camera_tools_wrap div.detail .system {
+	background-position: 0 -81px;
+}
+.camera_tools_wrap div.detail .iso {
+	background-position: 0 -17px;
+}
+.camera_tools_wrap div.detail .aperture {
+	background-position: 0 -40px;
+}
+.camera_tools_wrap div.detail .wb {
+	background-position: 0 -61px;
+}
+.camera_tools_wrap div.detail .shutter {
+	background-position: 0 -102px;
+}
+
+.real_pic_wrap {
+	position: relative;
+	background: #f7f7f7;
+	height: 550px;
+	padding-top: 50px;
+
+	.real_pic {
+		height: 400px;
+		.pic_1, .pic_2 {
+			position: relative;
+			width: 534px;
+			height: 400px;
+			background: #000;
+			float: left;
+			margin-left: 17px;
+			text-align: left;
+		}
+		.detail {
+			width: 147px;
+			height: 105px;
+			padding: 10px 0 0 16px;
+			background: #000;
+			opacity: 0.7;
+			filter: alpha(opacity=70);
+			position: absolute;
+			right: 0px;
+			bottom: 0px;
+			z-index: 10;
+			display: none;
+			div {
+				line-height: 19px;
+				padding-left: 27px;
+				font-size: 14px;
+				color: #fff;
+			}
+		}
+		.tip_icon {
+			width: 14px;
+			height: 14px;
+			background: url(camera_icons.png) -8px -1386px no-repeat;
+			display: inline-block;
+			position: absolute;
+			bottom: 10px;
+			right: 10px;
+			z-index: 11;
+		}
+
+	}
+
+}
+
+.real_pic_wrap {
+	text-align: center;
+}
+.pic_nav {
+	position: relative;
+	width: 1086px;
+	overflow: hidden;
+	margin-left: 17px;
+	margin-top: 18px;
+	ul {
+		width: 9999px;
+		margin-left: 0px;
+		li{
+			float: left;
+			width: 90px;
+			height: 68px;
+			cursor: pointer;
+			border: 1px solid #fff;
+		}
+		li.active{
+			border-color: #fff;
+		}
+	}
+	.nav_prev, .nav_next {
+		background: url(nav_next.png) no-repeat 50% 50%;
+		background-color: rgba(0,0,0,0.5);
+		position: absolute;
+		top: 0;
+		right: 0;
+		height: 68px;
+		width: 16px;
+	}
+	.nav_prev {
+		background-image: url(nav_prev.png);
+		right: auto;
+		left: 0;
+	}
+}
+
+.real_pic_detail {
+	margin-top: 22px;
+	padding: 0 18px;
+
+	.big_btn, .resume_btn {
+		display: inline-block;
+		width: 14px;
+		background: url(camera_icons.png) no-repeat;
+		text-indent: -9999px;
+		padding-left: 1px;
+	}
+	.big_btn {
+		background-position: -9px -300px;
+	}
+	.resume_btn {
+		float: right;
+		background-position: -26px -300px;
+		margin: 0 25px 0 23px;
+	}
+
+	.compare_two {
+		height: 27px;
+		.tool_currPhone {
+			float: left;
+		}
+		.tool_compare {
+			width: 50%;
+			float: right;
+			text-align: left;
+
+			.tools_compPhone {
+			}
+			.compare_list {
+				top: 0px;
+			}
+			.big_btn {
+				float: right;
+			}
+		}
+	}
+}
+
+/* big pic */
+.big_real_pic_wrap {
+	position: fixed;
+	width: 100%;
+	height: 100%;
+	background: #000;
+	top: 0;
+	left: 0;
+	z-index: 999;
+	display: none;
+	color: #fff;
+
+	.download {
+		background: url(camera_icons.png) no-repeat -11px -1420px;
+		padding-left: 20px;
+		color: #575d6a;
+		text-indent: -9999px;
+		margin-left: 16px;
+		display: inline-block;
+	}
+	.dl_pic1 {
+		float: left;
+	}
+	.dl_pic2 {
+	}
+	.big_inner {
+		text-align: center;
+		position: relative;
+		top: 50%;
+		left: 0;
+	}
+	.big_real_pic div {
+		position: relative;
+		width: 49%;	
+		display: inline-block;
+	}
+	.compare_two {
+		.tool_currPhone {
+			color: #fff;
+			line-height: 27px;
+		}
+		.tool_compPhone {
+			color: #fff;
+		}
+	}
+
+}
+
+
+
+.big_inner .real_pic_detail div.detail_wrap {
+	width: 49%;
+}

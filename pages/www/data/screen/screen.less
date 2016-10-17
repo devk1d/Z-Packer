@@ -1,0 +1,268 @@
+@black: #31343b;
+.post_screen_head {
+	.head_icon {
+		background-position: 11px -144px;;
+		&.active, &:hover {
+			background-position: 11px -503px;;
+		}
+	}
+}
+
+.screen_tools_wrap {
+	background: #f7f7f7;
+	position: relative;
+	height: 600px;
+	font-size: 0;
+	.screen_way {
+		width: 550px;
+		height: 568px;
+		background: #fff;
+		padding-top: 32px;
+		display: inline-block;
+		position: relative;
+
+		.tool_currPhone, .tool_compare {
+			position: absolute;
+			top: 560px;
+			left: 130px;
+
+			.compare_list {
+			}
+		}
+
+		.screen_tip {
+			width: 14px;
+			height: 14px;
+			background-position: 0 -3658px;
+			display: inline-block;
+			border-radius: 2px;
+			position: absolute;
+			color: #fff;
+			text-align: center;
+			top: 32px;
+			left: 36px;
+			z-index: 30;
+			&:hover {
+				background-position: 0 -3689px;
+			}
+		}
+		.screen_tip_content {
+			width: 228px;
+			height: 75px;
+			opacity: 0.7;
+			filter: alpha(opacity=70);
+			font-size: 14px;
+			color: #fff;
+			line-height: 18px;
+			background: #000;
+			position: absolute;
+			top: 22px;
+			left: 26px;
+			padding: 15px 0 0 42px;
+			display: none;
+			z-index: 20;
+		}
+
+		.way_content {
+			width: 162px;
+			height: 288px;
+			background: @black;
+			position: absolute;
+			taransition: all ease 1s;
+			bottom: 0;
+			left: 0;
+			margin: 0 0 70px 130px;
+
+			.content_width {
+				width: 100%;
+				height: 1px;
+				background: @black;
+				position: absolute;
+				top: -13px;
+
+				div {
+					width: 50px;
+					background: #fff;
+					font-size: 12px;
+					line-height: 20px;
+					position: absolute;
+					left: 50%;
+					top: -12px;
+					margin-left: -25px;
+					text-align: center;
+				}
+			}
+			.content_height {
+				width: 1px; 
+				height: 100%;
+				background: @black;
+				position: absolute;
+				left: -13px;
+
+				div {
+					height: 40px;
+					background: #fff;
+					font-size: 12px;
+					line-height: 40px;
+					position: absolute;
+					top: 50%;
+					left: -24px;
+					margin-top: -20px;
+					text-align: center;
+				}
+			}
+			.content_detail {
+				font-size: 14px;
+				text-align: center;
+				line-height: 20px;
+				vertical-align: middle;
+				color: #fff;
+				position: absolute;
+				top: 50%;
+				left: 50%;
+				margin-left: -20px;
+				margin-top: -19px;
+			}
+		}
+		
+	}
+
+	.wrap_tab_inch {
+		height: 100%;
+		.inch_left {
+			
+			
+		}
+	}
+	.wrap_tab_light, .wrap_tab_color, .wrap_tab_show{
+		.pic_content {
+			width: 290px;
+			height: 500px;
+			background: url(brightness.jpg) no-repeat 0 100px;
+			margin: -100px auto 0 auto;
+			position: relative;
+			padding: 100px 0;
+
+			.mask {
+				width: 100%;
+				height: 500px;
+				position: absolute;
+				background: #000;
+				top: 100px;
+				left: 0;
+			}
+
+			.color_bg {
+				width: 100%;
+				height: 100%;
+				position: absolute;
+			}
+			.color_origin {
+				background: url(color_normal.jpg) no-repeat;
+			}
+			.color_cold {
+				background: url(color_cold.jpg) no-repeat;
+			}
+			.color_warm {
+				background: url(color_warm.jpg) no-repeat;
+			}
+
+			.slide {
+				position: relative;
+				
+				.slide_handler {
+					width: 100%;
+					position: absolute;
+
+					div {
+						float: left;
+						width: 74px; 
+						height: 1px;
+						background: #e2e5e7;
+					}
+
+					.middle {
+						width: 140px;
+						height: 24px;
+						background: #e2e5e7;
+						color: #000;
+						font-size: 14px;
+						padding: 4px 0;
+						margin-top: -17px;
+						text-align: center;
+						border: 1px solid #e2e5e7;
+						opacity: 0.96;
+						filter: alpha(opacity=96);
+					}
+				}
+				.scale {
+					width: 35px;
+					position: absolute;
+					left: -50px;
+					color: #abb0bc;
+					font-size: 11px;
+					
+					div {
+						position: absolute;
+						right: -15px;
+						top: 50%;
+						width: 7px;
+						height: 1px;
+						background: #abb0bc;
+					}
+				}
+			}
+		}
+		.light_left {
+			height: 600px;
+		}
+	}
+	.wrap_tab_show {
+		position: relative;
+
+		.pic_content {
+			width: 290px;
+			height: 500px;
+			cursor: default !important;
+			margin: 0 auto;
+			background: none;
+
+			img {
+				width: 290px;
+				height: 500px;
+				position: absolute;
+				top: 0;
+				z-index: 11;
+			}
+			canvas {
+				width: 290px;
+				height: 500px;
+				position: absolute;
+				opacity: 0;
+				filter: alpha(opacity=0);
+				z-index: 12;
+				top: 0;
+
+			}
+			.slide {
+				position: relative;
+				top: -100px;
+
+				.slide_handler {
+					width: 16px;
+					left: -7px;
+					z-index: 1;
+
+					div {
+						width: 4px;
+						background: #abb0bc;
+					}
+					.middle {
+						display: none;
+					}
+				}
+			}
+		}
+	}
+}
+

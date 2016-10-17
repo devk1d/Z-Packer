@@ -1,0 +1,351 @@
+/* reset.css */
+body,ul,dl,dd,p,h1,h2,h3,hr,form,input,textarea,select {
+	margin: 0;
+	padding: 0;
+	-webkit-font-smoothing: antialiased;
+}
+
+li {
+	list-style: none;
+}
+
+h2 {
+	font-weight: normal;
+}
+
+h3 {
+	font-weight: normal;
+}
+
+img {
+	border: none;
+}
+/* reset.css end */
+
+body{
+	font-family: "Helvitica Neue", Helvitica, Arial,"Microsoft YaHei",sans-serif;
+	max-width: 100%;
+	overflow-x: hidden;
+}
+.clear {
+  zoom: 1;
+}
+
+.clear:after {
+  content: "."; 
+  display: block; 
+  height: 0; 
+  visibility: hidden; 
+  clear: both; 
+  overflow: hidden;
+}
+
+#main {
+padding-bottom: 170px;
+	background-image: url(bg.png);	
+	
+	.theme_color{
+		color: #0769fc;	
+	}
+}
+
+.relativity_wrap {
+	width: 1000px;
+	margin: 0 auto;	
+
+	.wrap_header_title {
+		text-align: center;
+		padding-top: 44px;	
+		letter-spacing: 2px;
+		h1 {
+			font-size: 56px;
+			letter-spacing: 10px;
+		}	
+		h2 {
+			font-size: 30px;
+			margin: 20px 0 0 0;
+		}
+		p {
+			margin: 25px 0 40px 0;	
+		}
+		.quot{
+			font-size: 30px;	
+		}
+		.sub_title {
+			font-size: 16px;
+			color: #fff;	
+			letter-spacing: 1;
+			vertical-align: super;
+		}		
+	}
+	
+	.wrap_header_eyes {
+		position: relative;
+
+		.eyes_des{
+			position: absolute;
+			display: inline-block;
+			font-size: 14px;
+			letter-spacing: 2px;
+			line-height: 40px;
+			color: #ccc;	
+			text-align: center;
+		}
+		.des_left {	
+			width: 148px;
+			top: 20px;
+			left: 0;
+		}		
+		.caton_logo {
+			width: 447px;
+			height: 384px;
+			margin: 0 auto;
+			position: relative;
+
+			.eye_bg{
+				position: absolute;
+				width: 160px;
+				height: 30px;
+				top: 185px;
+				left: 140px;
+				background:#fff;	
+			}
+			.eye_wrap {
+				width: 100%;
+				height: 100%;
+				background: url(eye_wrap.png) no-repeat;
+				position: relative;
+				z-index: 10;
+			}
+			.ball {
+				width: 14px;
+				height: 14px;
+				background: url(ball.png) no-repeat;
+				position: absolute;
+				z-index: 1;
+			}
+			#eye_left {
+				top: 194px;
+				left: 164px;	
+			}
+			#eye_right {
+				top: 194px;
+				left: 264px;
+			}	
+		}
+		.des_right {
+			width: 176px;
+			top: 20px;
+			right: 0;
+		}
+		.big_size {
+			font-size: 18px;	
+		}
+		.italic_size {
+			font-size: 16px;
+			font-style: italic;	
+		}
+	}
+	.wrap_header_share {
+		text-align: center;
+		margin-bottom: 60px;
+			
+		.share_name {
+			font-size: 22px;	
+			letter-spacing: 2px;
+			line-height: 40px;
+			margin-top: 5px;
+		}	
+		.share_title {
+			font-size: 14px;
+			letter-spacing: 2px;
+			line-height: 30px;
+			margin-bottom: 30px;
+			color: #ccc;	
+		}
+		.share_icon {
+			width: 344px;
+			padding: 0;
+			margin: 0 auto;
+			list-style: none;
+			overflow: hidden;
+			
+
+			.icon{
+				float: left;
+				background: url(icon.png) no-repeat;
+				width: 36px;
+				height: 36px;
+				margin-left: 17px;
+			}
+			.icon_left {
+				width: 32px;
+				height: 6px;
+				background-position: -10px -10px;	
+				margin-right: 15px;
+				margin-top: 15px;
+			}	
+			.qzone {
+				background-position: -10px -42px;	
+			}
+			.weibo {
+				background-position: -10px -87px;	
+			}
+			.baidu {
+				background-position: -10px -132px;	
+			}
+			.douban {
+				background-position: -10px -177px;	
+			}
+			.icon_right {
+				width: 32px;
+				height: 6px;
+				background-position: -10px -25px;	
+				margin-left: 32px;
+				margin-top: 15px;
+			}
+		}
+	}
+ }
+
+.wrap_content {
+	overflow: hidden;
+
+	.relativity_floor {
+		margin-bottom: 70px;
+		.video_part {
+			font-size: 16px;
+			color: #ccc;
+			margin: 0 0 20px 0; 
+			text-align: center;
+			
+			.part_num {
+				font-size: 48px;
+				font-style: italic;
+				color: #fa6003;
+				display: inline-block;
+				margin: 0 10px 0 12px;		
+			}		
+		}	
+		.video_content {
+			overflow: hidden;
+			display: block;
+			position: relative;
+			text-decoration: none;
+			cursor: pointer;
+			.content_img {
+				float: left;
+				width: 562px;
+				height: 369px;
+				margin-right: 34px;
+				border: 0;	
+			}
+			.video_img10 {
+				background: url(tech_video10.png) no-repeat;	
+			}
+			.video_img09 {
+				background: url(tech_video09.png) no-repeat;	
+			}
+			.video_img08 {
+				background: url(tech_video08.png) no-repeat;	
+			}
+			.video_img07 {
+				background: url(tech_video07.png) no-repeat;	
+			}
+			.video_img06 {
+				background: url(tech_video06.png) no-repeat;	
+			}
+			.video_img05 {
+				background: url(tech_video05.png) no-repeat;	
+			}
+			.video_img04 {
+				background: url(tech_video04.png) no-repeat;	
+			}
+			.video_img03 {
+				background: url(tech_video03.png) no-repeat;	
+			}
+			.video_img02 {
+				background: url(tech_video02.png) no-repeat;	
+			}
+			.video_img01 {
+				background: url(tech_video01.png) no-repeat;	
+			}
+			p {
+				margin-left: 596px;	
+				width: 349px;
+			}
+			.content_title {
+				font-size: 18px;
+				letter-spacing: 2px;
+				color: #fff;	
+				margin-top: 20px; 
+			}
+			.content_des {
+				margin-top: 30px;
+				margin-bottom: 50px;
+				font-size: 14px;
+				line-height: 30px;
+				color: #ccc;	
+			}
+			.content_index{
+				font-size: 14px;
+				line-height: 34px;
+				color: #fa6003;
+			}
+			.list_cover {
+				width: 994px;
+				height: 363px;
+				background: #000;
+				border: 3px solid #fa6003;
+				opacity: 0;
+				filter: alpha(opacity=0);
+				position: absolute;
+				top: 0;
+				left: 0;	
+
+				.play_btn {
+					width: 80px;
+					height: 80px;
+					background: url(icon.png) -10px -222px no-repeat;	
+					position: absolute;
+					top: 50%;
+					left: 50%;
+					margin-left: -40px;
+					margin-top: -40px;
+				}
+			}
+		}
+	}	
+	.relativity_footer {
+		height: 142px;
+		margin-top: 148px;
+		border: 3px solid #162332;
+		
+		.zealer_logo {
+			float: left;
+			width: 196px;
+			height: 100%;
+			background: url(logo.png)  50% 50% no-repeat;	
+		}	
+		.footer_info {
+			height: 100%;
+			margin-left: 196px;
+			border-left: 3px solid #162332;
+			overflow: hidden;
+			dl{
+				float: left;
+				margin: 37px 0 0 40px;
+				font-size: 12px;
+				color: #666;	
+			}
+			.second_col {
+				margin-left: 30px;	
+			}
+			dd{
+				margin-left: 20px;
+				line-height: 24px;	
+			}
+		}
+
+	}
+}

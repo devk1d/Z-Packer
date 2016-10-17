@@ -1,0 +1,154 @@
+
+// 大banner
+.banner_first {
+	max-width: 1920px;
+	min-width: 1120px;
+	margin: 0 auto;
+	
+	// 移动端样式
+	@media only screen and (max-width: 775px) {
+		width: 100%;
+		max-width: none;
+		min-width: 0;
+	}
+
+	li {
+		float: left;
+		width: 25%;
+
+		&.banner_firstBig {
+			width: 50%;
+		}
+		img {
+			display: block;
+			width: 100%;
+		}
+		a {
+			display: block;
+			position: relative;
+		}
+
+		@media only screen and (max-width: 775px) {
+			width: 50%;
+			&.banner_firstBig {
+				display: none;
+			}
+		}
+	}
+
+	.banner_cover {
+		width: 100%;
+		height: 100%;
+		position: absolute;
+		z-index: 5;
+		top: 0;
+		opacity: 0.1;
+		transition: opacity .25s ease-in-out;
+		background: #000;
+		&:hover {
+			opacity: 0;
+			transition: opacity .25s ease-in-out;
+		}
+	}
+
+	img {
+		display: block;
+	}
+}
+
+
+.banner_sliderWrap {
+	width: 1220px;
+	margin: 0 auto;
+	position: relative;
+
+	@media only screen and (max-width: 775px) {
+		display: none;
+	}
+
+	.slider_arrowLeft, .slider_arrowRight {
+		width: 30px;
+		height: 60px;
+		position: absolute;
+		z-index: 5;
+		background-position: -93px -279px;
+		transition:background-position .3s ease;
+		top: 60px;
+		border: 1px solid #fff;
+		cursor: pointer;
+	}
+
+	.slider_arrowLeft:hover {
+		background-position: 9px -279px;
+	}
+
+	.slider_arrowRight {
+		right: 0px;
+		background-position: -93px -393px;
+		&:hover {
+			background-position: 9px -393px;
+		}
+	}
+}
+
+.banner_slider {
+	width: 1120px;
+	margin: 0 auto;
+	overflow: hidden;
+	height: 168px;
+	margin-top: 20px;
+
+
+	.slider_list {
+		width: 2280px;
+		position: relative;
+		left: -285px;
+
+		.slider_iterm {
+			display: block;
+			float: left;
+			margin-right: 20px;
+			&:hover .secbanner_cover {
+				box-shadow: none;
+			}
+		}
+		.slider_iterm a {
+			position: relative;		
+			display: block;
+			box-shadow:  0 0 30px blue inset;
+		}
+		.secbanner_title_wrap {
+			position: absolute;		
+			bottom: 10px;
+			left: 0;
+			z-index: 5;
+			width: 100%;
+			text-align: center;
+			color: #fff;
+			.secbanner_title {
+				padding-bottom: 5px;
+				font-size: 16px;
+			}
+			.secbanner_tip {
+				padding: 3px 8px;
+				font-size: 12px;
+				border: 1px solid #fff;		
+			}
+		}
+		.secbanner_cover {
+			position: absolute;
+			top: 0;
+			z-index: 1;
+			width: 100%;
+			height: 100%;
+			opacity: .7;
+			box-shadow: inset 0 -70px 123px #000;
+			transition: all 0.2s ease-in-out;
+		}
+
+		img {
+			display: block;
+			max-width: 265px;
+		}
+	}
+}

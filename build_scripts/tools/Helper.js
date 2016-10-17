@@ -11,6 +11,9 @@ let Helper = {
     log: (msg) => {
         console.log(chalk.green(msg));
     },
+    logCyan: (msg) => {
+        console.log(chalk.cyan(msg));
+    },
     error: (msg) => {
         console.log(chalk.red(msg));
     },
@@ -28,6 +31,9 @@ let Helper = {
             return false;
         }
     },
+    caculateTime(startTime) {
+        return ((+new Date() - startTime)/1000).toFixed(2) + 's';
+    }
 }
 
 Helper.md5Name = (filePath, content) => {

@@ -2,6 +2,7 @@ import path from 'path';
 import fs from 'fs-extra';
 import glob from 'glob';
 import config from '../config';
+import Helper from '../tools/Helper';
 
 const regExp = config.regExp;
 
@@ -14,12 +15,20 @@ function arrUnique(arr) {
 // 获取包含的 widget
 let INCLUDE_CACHE = {};
 function getIncludeWidget(filePath) {
+    if(!Helper.fileExists(filePath)) {
+        return [];
+    }
+
     if(INCLUDE_CACHE[filePath]) {
         return INCLUDE_CACHE[filePath];
     }
 
-    const _fileContent = fs.readFileSync(filePath, { encoding: 'utf8' });
-    const matches = _fileContent.match(regExp.widget) || [];
+    let fileContent = fs.readFileSync(filePath, { encoding: 'utf8' });
+
+    // 忽略掉注释
+    fileContent = fileContent.replace(/<!--(.*?)-->/gi, '');
+
+    const matches = fileContent.match(regExp.widget) || [];
 
     let includeWidget = [];
 

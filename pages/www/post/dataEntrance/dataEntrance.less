@@ -1,0 +1,160 @@
+@l_gray: #f7f8f8;
+@black: #31343b;
+
+.post_data{
+	width: 1116px;;
+	height: 256px;
+	border: 2px solid @l_gray;
+	margin: 20px auto 0 auto;
+
+	.data_phone {
+		width: 296px;
+		height: 100%;
+		float: left;
+		overflow: hidden;
+		border-right: 2px solid @l_gray;
+
+		span {
+			width: 100%;
+			height: 47px;
+			float: left;
+			background: url(phone_img.png) 88px 29px no-repeat;
+		}
+		img {
+			width: 260px;
+			float: left;
+			background-color: #000;
+			margin-left: 18px;
+		}
+	}
+	.data_cloud {
+		width: 480px;
+		height: 100%;
+		float: left;
+		border-right: 2px solid @l_gray;
+		position: relative;
+
+		.cloud_tag {
+			position: absolute;
+			text-align: center;
+			border-radius: 50%;
+			position: absolute;
+			overflow: hidden;
+			display: none;
+			color: #fff;
+		}
+		.cloud_tag_0 {
+			width: 140px;
+			height: 140px;
+			line-height: 140px;
+			font-size: 22px;
+			background: #6d73e6;
+			background: linear-gradient(top, #4e52da, #878dec);
+			background: -ms-linear-gradient(top, #4e52da, #878dec);
+			background: -webkit-linear-gradient(top, #4e52da, #878dec);
+			background: -o-linear-gradient(top, #4e52da, #878dec);
+			background: -moz-linear-gradient(top, #4e52da, #878dec);
+			top: 50%;
+			left: 50%;
+			margin: -70px 0 0 -70px;
+			z-index: 5;
+		}
+		.cloud_tag_small {
+			width: 70px;
+			height: 70px;
+			font-size: 14px;
+			line-height: 70px;
+			margin: -35px 0 0 -35px;
+		}
+		.cloud_tag_big {
+			width: 100px;
+			height: 100px;
+			font-size: 18px;
+			line-height: 100px;
+			margin: -50px -50px;
+		}
+		.cloud_color_1 {
+			background: #ff4e5d;
+			background: linear-gradient(top, #ff333f, #ff6c79);
+			background: -ms-linear-gradient(top, #ff333f, #ff6c79);
+			background: -webkit-linear-gradient(top, #ff333f, #ff6c79);
+			background: -o-linear-gradient(top, #ff333f, #ff6c79);
+			background: -moz-linear-gradient(top, #ff333f, #ff6c79);
+		}
+		.cloud_color_2 {
+			background: #4add6d;
+			background: linear-gradient(top, #39c955, #67e588);
+			background: -ms-linear-gradient(top, #39c955, #67e588);
+			background: -webkit-linear-gradient(top, #39c955, #67e588);
+			background: -o-linear-gradient(top, #39c955, #67e588);
+			background: -moz-linear-gradient(top, #39c955, #67e588);
+		}
+		.cloud_color_3  {
+			background: #ffd300;
+			background: linear-gradient(top, #ffc000, #ffdd00);
+			background: -ms-linear-gradient(top, #ffc000, #ffdd00);
+			background: -webkit-linear-gradient(top, #ffc000, #ffdd00);
+			background: -o-linear-gradient(top, #ffc000, #ffdd00);
+			background: -moz-linear-gradient(top, #ffc000, #ffdd00);
+		}
+		.cloud_color_4  {
+			background: #0093ff;
+			background: linear-gradient(top, #0072ff, #00a8ff);
+			background: -ms-linear-gradient(top, #0072ff, #00a8ff);
+			background: -webkit-linear-gradient(top, #0072ff, #00a8ff);
+			background: -o-linear-gradient(top, #0072ff, #00a8ff);
+			background: -moz-linear-gradient(top, #0072ff, #00a8ff);
+		}
+	}
+	.data_price {
+		width: 292px;
+		height: 100%;
+		float: left;
+		position: relative;
+		padding-left: 10px;
+
+		.price_title {
+			font-size: 14px;
+			float: left;
+			color: @black;
+			line-height: 30px;
+			margin-top: 20px;
+		}
+		.now_price {
+			height: 30px;
+			float: right;
+			color: #eb2324;
+			font-size: 0;
+			line-height: 30px;
+			margin-top: 20px;
+			position: relative;
+			z-index: 5;
+			
+			span {
+				font-size: 24px;
+				font-family: 'ToolFont';
+			}
+			.price_logo {
+				font-size: 18px;
+			}
+			.price_num {
+				font-size: 30px;
+			}
+		}
+		.price_canvas {
+			width: 360px;
+			height: 245px;
+			position: absolute;
+			line-height: 245px;
+			bottom: -10px;
+			z-index: 1;
+		}
+		.no_pic {
+			width: 180px;
+			height: 180px;
+			float: left;
+			background: url(no_data.png) no-repeat;
+			margin: 10px 0 0 76px;
+		}
+	}
+}

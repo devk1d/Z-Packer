@@ -9,52 +9,54 @@ import config from '../config';
 import Helper from '../tools/Helper';
 import ConcatFiles from './ConcatFiles';
 
-class Pack_JS_CSS {
-    constructor(packFiles, outputName, packType) {
-        this.packFiles = packFiles;
-        this.packType = packType; // js or css
-        this.outputName = outputName;
-        this.destPath = path.join(config.paths.build, packType);
-    }
+async function PackJSCSS(opts) {
+    // opts = {
+    //     packFiles: [],
+    //     packType: '', // js css
+    //     outputName: ''
+    // }
 
-    start() {
-        fs.ensureDirSync(this.destPath);
-        
-        let destName = this.packing();
-        return destName;
-    }
+    const packFiles = opts.packFiles;
+    const packType = opts.packType;
+    const outputName = opts.outputName;
+    const destPath = packType == 'js' ? config.paths.buildJs : config.paths.buildCss;
 
-    async packing() {
-        let packedCoded = "";
+    let packedCoded = "";
+    if(packType == 'css') {
+        packedCoded = ConcatFiles(packFiles);
 
-        if(this.packType == 'css') {
-            packedCoded = ConcatFiles(this.packFiles);
+        try {
             packedCoded = (await less.render(packedCoded)).css;
-            packedCoded = new CleanCSS().minify(packedCoded).styles;
-        }else {
-            packedCoded = UglifyJS.minify(this.packFiles).code;
+        }catch(err) {
+            console.log(err);
         }
 
-        const destName = this.outputName + Helper.md5(packedCoded).slice(0, 5) + '.' + this.packType;
+        if(!config.debug) {
+            packedCoded = new CleanCSS().minify(packedCoded).styles;
+        }
+    }else {
+        if(!config.debug) {
+            try {
+                packedCoded = UglifyJS.minify(packFiles).code;
+            }catch(err) {
+                console.log(err);
+            }
 
-        this.removeOldFile();
-
-        fs.writeFileSync(path.join(this.destPath, destName), packedCoded);
-
-        return destName;
+        }else {
+            packedCoded = ConcatFiles(packFiles);
+        }
     }
 
     // 删除原先的 文件
-    removeOldFile() {
-        const removeFiles = glob.sync(path.join(this.destPath, this.outputName + '*.' + this.packType));
-        removeFiles.forEach((filePath) => {
-            fs.removeSync(filePath);
-        });
-    }
+    const removeFiles = glob.sync(path.join(destPath, outputName + '*.' + packType));
+    removeFiles.forEach(filePath => {
+        fs.removeSync(filePath);
+    });
 
+    const destName = outputName + Helper.md5(packedCoded).slice(0, 5) + '.' + packType;
+    fs.writeFileSync(path.join(destPath, destName), packedCoded);
+
+    return destName;
 }
 
-export default function pack(opts) {
-    const packIns = new Pack_JS_CSS(opts.packFiles, opts.outputName, opts.packType);
-    return packIns.start();
-}
+export default PackJSCSS;
