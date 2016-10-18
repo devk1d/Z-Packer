@@ -12,6 +12,8 @@ import PackGlobal from './libs/PackGlobal';
 import PackSinglePage from './tasks/PackSinglePage';
 import Helper from './tools/Helper';
 
+const paths = config.paths;
+
 let startTime = +new Date();
 let taskCount = 0;
 
@@ -27,16 +29,18 @@ async function _packLibs() {
 }
 
 async function WatchFiles() {
+    Helper.log('开始监测文件变化\n');
+    chokidar.watch([paths.pages, paths.libs], { ignored: /[\/\\]\./, ignoreInitial: true }).on('all', async function(event, changeFilePath) {
+        Helper.log(`变化文件：${path.relative(paths.pages, changeFilePath)}, 类型：${event}\n`);
 
-    chokidar.watch([config.paths.pages, config.paths.libs], {ignored: /[\/\\]\./}).on('all', async function(event, changeFilePath) {
         const pathParse = path.parse(changeFilePath);
 
         // libs
-        if(~changeFilePath.indexOf(config.paths.libs)) {
+        if(~changeFilePath.indexOf(paths.libs)) {
             // await _packLibs();
             //
             // // 遍历页面
-            // glob.sync(path.join(config.paths.output, '*', '*', '*.php')).forEach(filePath => {
+            // glob.sync(path.join(paths.output, '*', '*', '*.php')).forEach(filePath => {
             //     let fileContent = fs.readFileSync(filePath);
             //     const mat = fileContent.match(/\$this->pageLibsStatic\((.+)\)/g);
             //
@@ -53,9 +57,10 @@ async function WatchFiles() {
 
             // global
             if(spDir[0] == 'global' || spDir[1] == 'global') {
+                Helper.log('打包 global');
                 // const globalPath = spDir[0] == 'global' ? pathParse.dir : path.join(pathParse.dir, '..');
-                // const relativePath = path.relative(config.paths.pages, globalPath);
-                // const globalOutputPath = path.join(config.paths.output, relativePath);
+                // const relativePath = path.relative(paths.pages, globalPath);
+                // const globalOutputPath = path.join(paths.output, relativePath);
                 //
                 // // 移动文件至 output
                 // CopyFiles(relativePath);
@@ -79,21 +84,22 @@ async function WatchFiles() {
             }
             // 单页面打包
             else {
+                Helper.log('打包页面\n');
                 // www/mobile/index.php or www/mobile/page/page.php
-                // const pagePath = path.relative(config.paths.pages, changeFilePath).split('/').length == 3 ? pathParse.dir : path.join(pathParse.dir, '..');
-                // const relativePath = path.relative(config.paths.pages, pagePath);
-                // const pageOutputPath = path.join(config.paths.output, relativePath);
-                //
-                // CopyFiles(relativePath);
-                //
-                // // 遍历项目的所有页面，替换 page js css
-                // const pageFiles = glob.sync(path.join(pageOutputPath, '*.php'));
-                // for (let filePath of pageFiles) {
-                //     startTime = +new Date();
-                //     Helper.log(`--- 任务 ${++taskCount}: 打包页面 ${path.relative(config.paths.output, filePath)} ---\n`);
-                //     await PackSinglePage(filePath);
-                //     Helper.log(`--- 耗时：${ Helper.caculateTime(startTime) } ---\n\n\n\n`);
-                // };
+                const pagePath = path.relative(paths.pages, changeFilePath).split('/').length == 3 ? pathParse.dir : path.join(pathParse.dir, '..');
+                const relativePath = path.relative(paths.pages, pagePath);
+                const pageOutputPath = path.join(paths.output, relativePath);
+
+                CopyFiles(relativePath);
+
+                // 遍历项目的所有页面，替换 page js css
+                const pageFiles = glob.sync(path.join(pageOutputPath, '*.php'));
+                for (let filePath of pageFiles) {
+                    startTime = +new Date();
+                    Helper.log(`--- 任务 ${++taskCount}: 打包页面 ${path.relative(paths.output, filePath)} ---\n`);
+                    await PackSinglePage(filePath);
+                    Helper.log(`--- 耗时：${ Helper.caculateTime(startTime) } ---\n\n\n\n`);
+                };
             }
         }
 
@@ -119,10 +125,10 @@ async function packAll() {
     await _packLibs();
 
     // 遍历页面
-    const pageFiles = glob.sync(path.join(config.paths.output, '*', '*', '*.php'));
+    const pageFiles = glob.sync(path.join(paths.output, '*', '*', '*.php'));
     for (let filePath of pageFiles) {
         startTime = +new Date();
-        Helper.log(`--- 任务 ${++taskCount}: 打包页面 ${path.relative(config.paths.output, filePath)} ---\n`);
+        Helper.log(`--- 任务 ${++taskCount}: 打包页面 ${path.relative(paths.output, filePath)} ---\n`);
         await PackSinglePage(filePath);
         Helper.log(`--- 耗时：${ Helper.caculateTime(startTime) } ---\n\n\n\n`);
     }
