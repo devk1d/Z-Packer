@@ -4,6 +4,7 @@ import 'babel-polyfill';
 import path from 'path';
 import fs from 'fs-extra';
 import glob from 'glob';
+import chokidar from 'chokidar';
 import config from './config';
 import CopyFiles from './libs/CopyFiles';
 import PackLibs from './tasks/PackLibs';
@@ -76,24 +77,26 @@ async function WatchFiles() {
                     fs.writeFileSync(filePath, fileContent);
                 })
             }
-        }
-        // 单页面打包
-        else {
-            // www/mobile/index.php or www/mobile/page/page.php
-            const pagePath = path.relative(config.paths.pages, changeFilePath).split('/').length == 3 ? pathParse.dir : path.join(pathParse.dir, '..');
-            const relativePath = path.relative(config.paths.pages, pagePath);
-            const pageOutputPath = path.join(config.paths.output, relativePath);
+            // 单页面打包
+            else {
+                // www/mobile/index.php or www/mobile/page/page.php
+                const pagePath = path.relative(config.paths.pages, changeFilePath).split('/').length == 3 ? pathParse.dir : path.join(pathParse.dir, '..');
+                const relativePath = path.relative(config.paths.pages, pagePath);
+                const pageOutputPath = path.join(config.paths.output, relativePath);
 
-            CopyFiles(relativePath);
+                CopyFiles(relativePath);
 
-            // 遍历项目的所有页面，替换 page js css
-            glob.sync(path.join(pageOutputPath, '*.php')).forEach(filePath => {
-                startTime = +new Date();
-                Helper.log(`--- 任务 ${++taskCount}: 打包页面 ${path.relative(config.paths.output, filePath)} ---\n`);
-                await PackSinglePage(filePath);
-                Helper.log(`--- 耗时：${ Helper.caculateTime(startTime) } ---\n\n\n\n`);
-            });
+                // 遍历项目的所有页面，替换 page js css
+                const pageFiles = glob.sync(path.join(pageOutputPath, '*.php'));
+                for (let filePath of pageFiles) {
+                    startTime = +new Date();
+                    Helper.log(`--- 任务 ${++taskCount}: 打包页面 ${path.relative(config.paths.output, filePath)} ---\n`);
+                    await PackSinglePage(filePath);
+                    Helper.log(`--- 耗时：${ Helper.caculateTime(startTime) } ---\n\n\n\n`);
+                };
+            }
         }
+
     });
 }
 
@@ -127,5 +130,5 @@ async function packAll() {
 
 (async function run() {
     packAll();
-    WatchFiles();
+    // WatchFiles();
 })();
