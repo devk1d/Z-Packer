@@ -1,1 +1,0 @@
-{widget "mediaFirst", array()}
