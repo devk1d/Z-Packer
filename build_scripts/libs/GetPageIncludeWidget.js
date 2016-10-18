@@ -13,14 +13,15 @@ function arrUnique(arr) {
 }
 
 // 获取包含的 widget
-let INCLUDE_CACHE = {};
 function getIncludeWidget(filePath) {
     if(!Helper.fileExists(filePath)) {
         return [];
     }
 
-    if(INCLUDE_CACHE[filePath]) {
-        return INCLUDE_CACHE[filePath];
+    !global.TEMP_CACHE.includeWidget && (global.TEMP_CACHE.includeWidget = {});
+
+    if(global.TEMP_CACHE.includeWidget[filePath]) {
+        return global.TEMP_CACHE.includeWidget[filePath];
     }
 
     let fileContent = fs.readFileSync(filePath, { encoding: 'utf8' });
@@ -45,7 +46,7 @@ function getIncludeWidget(filePath) {
 
     includeWidget = arrUnique(includeWidget)
 
-    INCLUDE_CACHE[filePath] = includeWidget;
+    global.TEMP_CACHE.includeWidget[filePath] = includeWidget;
 
     return includeWidget;
 }

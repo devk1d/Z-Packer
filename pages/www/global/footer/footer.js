@@ -2,8 +2,9 @@ Z.define('footer/footer', {
 	initialize: function() {
 		this.$wrap= $('.global_footer');
 		this.bindEvent();
+		var a = 2;
 	},
-	bindEvent: function(){ 
+	bindEvent: function(){
 		var self = this;
 		var $doc= $(document);
 
@@ -12,7 +13,7 @@ Z.define('footer/footer', {
 
 		$(window).scroll(function(){
 			if( $doc.scrollTop() > $(window).height()/4 ){
-				$sideBtn.css('bottom', '40px'); 
+				$sideBtn.css('bottom', '40px');
 			}
 			else{
 				$sideBtn.css('bottom', '-90px');
@@ -20,7 +21,7 @@ Z.define('footer/footer', {
 		});
 
 		$toUp.click(function(){
-			$('body,html').animate({scrollTop:0}, 300);	
+			$('body,html').animate({scrollTop:0}, 300);
 		});
 
 		//判断是否为手机详情页，显示用户反馈按钮
@@ -42,9 +43,9 @@ Z.define('footer/footer', {
 			replyDialog.hide();
 		});
 		$replyDialogWrap.find('.dialog_inner').css({
-			'width':'460px', 
+			'width':'460px',
 			'height': '220px',
-			'margin-top':'-110px', 
+			'margin-top':'-110px',
 			'margin-left':'-230px'
 		}).addClass('contect_dialog');
 
@@ -82,7 +83,7 @@ Z.define('footer/footer', {
 							$contentWriter.css({
 								'animation': _animation,
 								'-webkit-animation': _animation,
-								'-moz-animation': _animation, 
+								'-moz-animation': _animation,
 								'-o-animation': _animation
 							});
 							setTimeout(function(){
@@ -93,8 +94,8 @@ Z.define('footer/footer', {
 						}
 						btnTrigger = false;
 					}, 'json');
-					
-					
+
+
 				}
 			}
 		});
@@ -109,4 +110,3 @@ Z.define('footer/footer', {
 		});
 	}
 });
-	

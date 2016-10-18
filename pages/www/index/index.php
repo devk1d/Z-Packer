@@ -15,13 +15,13 @@
 	<div id="main_video">
 		{widget "videoList", array('acid' => $acid, 'videoBanner' => $videoBanner,  'videoSeries' => $videoSeries)}
 	</div>
-	
+
 	<!-- OK 精品 -->
-	<div id="main_plusRecom">
+	<div id="main_plusRecom">334
 		{widget "plusList", array('plusRecom' => $plusRecom)}
 	</div>
 
-	<!-- 深度好文 
+	<!-- 深度好文
 	<div id="main_plusArt">
 		{widget "plusArt", array('plusArtList' => $plusArtList, 'plusSlider' => $plusSlider)}
 	</div>

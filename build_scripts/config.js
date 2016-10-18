@@ -3,7 +3,7 @@ import path from 'path';
 
 
 let conf = {
-    debug: false,
+    debug: true,
     paths: {
         pages: path.resolve(__dirname, '..', 'pages'),
         output: path.resolve(__dirname, '..', 'output'),
