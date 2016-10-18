@@ -1,14 +1,15 @@
 import fs from 'fs-extra';
 import path from 'path';
 
+const rootPath = path.resolve(__dirname, '..');
 
 let conf = {
     debug: true,
     paths: {
-        pages: path.resolve(__dirname, '..', 'pages'),
-        output: path.resolve(__dirname, '..', 'output'),
-        build: path.resolve(__dirname, '..', 'static', 'page'),
-        libs: path.resolve(__dirname, '..', 'static', 'libs'),
+        pages: path.resolve(rootPath, '..', '..', 'wwwroot', 'protected', 'pages'),
+        output: path.resolve(rootPath, '..', '..', 'wwwroot', 'protected', 'output'),
+        build: path.resolve(rootPath, '..', '..', 'wwwroot', 'static', 'page'),
+        libs: path.resolve(rootPath, '..', '..', 'wwwroot', 'static', 'libs'),
     },
     regExp: {
         widget: /{widget (.*?)}/gi,

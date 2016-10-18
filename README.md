@@ -4,6 +4,8 @@
 
 	CopyFiles 拷贝 pages 目录至 output
 
+	PackLayouts 打包 layout 代码
+
 	PackLibs 打包libs代码
 
 	EachPage 遍历各页面
@@ -54,3 +56,8 @@ libs 变化
     PackJSCSS // 合并JS CSS
 
 End
+
+
+问题：
+	ReplaceTemplate: 注释夸行问题
+	Helper log 规范化

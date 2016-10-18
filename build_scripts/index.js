@@ -7,6 +7,7 @@ import glob from 'glob';
 import chokidar from 'chokidar';
 import config from './config';
 import CopyFiles from './libs/CopyFiles';
+import PackLayouts from './tasks/PackLayouts';
 import PackLibs from './tasks/PackLibs';
 import PackGlobal from './libs/PackGlobal';
 import PackSinglePage from './tasks/PackSinglePage';
@@ -54,7 +55,22 @@ async function WatchFiles() {
                 fileContent = fileContent.replace(/libs_([a-zA-Z0-9]+).css/, global.ASSETS.libs.css);
                 fs.writeFileSync(filePath, fileContent);
             })
-        }else {
+        }
+        // layout
+        else if(~changeFilePath.indexOf('layouts')) {
+            const relativePath = path.relative(paths.pages, changeFilePath);
+
+            // 移动文件至 output
+            const isSuccess = CopyFiles(relativePath);
+
+            if(isSuccess) {
+                startTime = +new Date();
+                Helper.log(`--- 任务 ${++taskCount}: 打包layout ${relativePath} ---\n`);
+                PackLayouts(path.join(paths.output, relativePath));
+                Helper.log(`--- 耗时：${ Helper.caculateTime(startTime) } ---\n\n\n`);
+            }
+        }
+        else {
             const spDir = pathParse.dir.split('/').reverse();
 
             // global
@@ -101,7 +117,7 @@ async function WatchFiles() {
                 const pageFiles = glob.sync(path.join(pageOutputPath, '*.php'));
 
                 for (let filePath of pageFiles) {
-                    
+
                     startTime = +new Date();
                     Helper.log(`--- 任务 ${++taskCount}: 打包页面 ${path.relative(paths.output, filePath)} ---\n`);
                     await PackSinglePage(filePath);
@@ -131,6 +147,15 @@ async function packAll() {
     Helper.log(`--- 任务 ${++taskCount}: 复制目录 ---\n`);
     CopyFiles('.');
     Helper.log(`--- 耗时：${ Helper.caculateTime(startTime) } ---\n\n\n`);
+
+    // 打包 layout
+    const layoutPathArr = glob.sync(path.join(paths.output, 'layouts', '*.php'));
+    layoutPathArr.forEach(layoutPath => {
+        startTime = +new Date();
+        Helper.log(`--- 任务 ${++taskCount}: 打包layout ${path.relative(paths.output, layoutPath)} ---\n`);
+        PackLayouts(layoutPath);
+        Helper.log(`--- 耗时：${ Helper.caculateTime(startTime) } ---\n\n\n`);
+    });
 
     // 打包 libs
     await _packLibs();

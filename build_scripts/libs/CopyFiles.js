@@ -13,12 +13,19 @@ const paths = config.paths;
 function CopyFiles(relativePath) {
     // 删除响应的 output 目录
     const rmPath = path.join(paths.output, relativePath);
-    fs.removeSync(rmPath);
-    Helper.logCyan(`    - 删除目录: ${rmPath}\n`);
 
-    const cpPath = path.join(paths.pages, relativePath);
-    fs.copySync(cpPath, path.join(paths.output, relativePath));
-    Helper.logCyan(`    - 复制目录: ${cpPath}\n`);
+    if(Helper.dirExists(rmPath) || Helper.fileExists(rmPath)) {
+        fs.removeSync(rmPath);
+        Helper.logCyan(`    - 删除目录/文件: ${rmPath}\n`);
+
+        const cpPath = path.join(paths.pages, relativePath);
+        fs.copySync(cpPath, path.join(paths.output, relativePath));
+        Helper.logCyan(`    - 复制目录/文件: ${cpPath}\n`);
+
+        return true;
+    }else {
+        return false;
+    }
 }
 
 export default CopyFiles;

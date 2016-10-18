@@ -87,7 +87,7 @@ async function PackSinglePage(pagePath) {
             outputName: 'page_' + Helper.md5(path.relative(config.paths.output, pagePath)).slice(0, 5),
         })
     }
-    fileContent += `\n{pageStatic "${pageAsset.js}", "${pageAsset.css}"}\n`;
+    fileContent += `\n{pagePageStatic "${pageAsset.js}", "${pageAsset.css}"}\n`;
 
     //  php 模板替换
     fileContent = ReplaceTemplate(fileContent);

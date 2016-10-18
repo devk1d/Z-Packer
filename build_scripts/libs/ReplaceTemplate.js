@@ -42,7 +42,7 @@ var compileTplReg = [
 
             [/{pageLibsStatic (.*?)}/gi, '<?php $this->pageLibsStatic($1); ?>'],
             [/{pageGlobalStatic (.*?)}/gi, '<?php $this->pageGlobalStatic($1); ?>'],
-			[/{pageStatic (.*?)}/gi, '<?php $this->pageStatic($1); ?>'],
+			[/{pagePageStatic (.*?)}/gi, '<?php $this->pagePageStatic($1); ?>'],
 			[/{setLayout (.*?)}/gi, '<?php $this->setLayout($1); ?>'],
 			[/{setTitle (.*?)}/gi, '<?php $this->setTitle($1); ?>'],
 			[/{setKeywords(.*?)}/gi, '<?php $this->setKeywords($1); ?>'],
