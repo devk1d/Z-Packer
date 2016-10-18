@@ -33,67 +33,67 @@ async function WatchFiles() {
 
         // libs
         if(~changeFilePath.indexOf(config.paths.libs)) {
-            await _packLibs();
-
-            // 遍历页面
-            glob.sync(path.join(config.paths.output, '*', '*', '*.php')).forEach(filePath => {
-                let fileContent = fs.readFileSync(filePath);
-                const mat = fileContent.match(/\$this->pageLibsStatic\((.+)\)/g);
-
-                if(!mat) {
-                    return ;
-                }
-
-                fileContent = fileContent.replace(/libs_(.+).js/, global.ASSETS.libs.js);
-                fileContent = fileContent.replace(/libs_(.+).css/, global.ASSETS.libs.css);
-                fs.writeFileSync(filePath, fileContent);
-            })
+            // await _packLibs();
+            //
+            // // 遍历页面
+            // glob.sync(path.join(config.paths.output, '*', '*', '*.php')).forEach(filePath => {
+            //     let fileContent = fs.readFileSync(filePath);
+            //     const mat = fileContent.match(/\$this->pageLibsStatic\((.+)\)/g);
+            //
+            //     if(!mat) {
+            //         return ;
+            //     }
+            //
+            //     fileContent = fileContent.replace(/libs_(.+).js/, global.ASSETS.libs.js);
+            //     fileContent = fileContent.replace(/libs_(.+).css/, global.ASSETS.libs.css);
+            //     fs.writeFileSync(filePath, fileContent);
+            // })
         }else {
             const spDir = pathParse.dir.split('/').reverse();
 
             // global
             if(spDir[0] == 'global' || spDir[1] == 'global') {
-                const globalPath = spDir[0] == 'global' ? pathParse.dir : path.join(pathParse.dir, '..');
-                const relativePath = path.relative(config.paths.pages, globalPath);
-                const globalOutputPath = path.join(config.paths.output, relativePath);
-
-                // 移动文件至 output
-                CopyFiles(relativePath);
-
-                // 打包 global
-                const globalAsset = await PackGlobal(globalOutputPath);
-
-                // 遍历项目的所有页面，替换 global js css
-                glob.sync(path.join(globalOutputPath, '..', '*', '*.php')).forEach(filePath => {
-                    let fileContent = fs.readFileSync(filePath);
-                    const mat = fileContent.match(/\$this->pageGlobalStatic\((.+)\)/g);
-
-                    if(!mat) {
-                        return ;
-                    }
-
-                    fileContent = fileContent.replace(/global_(.+).js/, globalAsset.js);
-                    fileContent = fileContent.replace(/global_(.+).css/, globalAsset.css);
-                    fs.writeFileSync(filePath, fileContent);
-                })
+                // const globalPath = spDir[0] == 'global' ? pathParse.dir : path.join(pathParse.dir, '..');
+                // const relativePath = path.relative(config.paths.pages, globalPath);
+                // const globalOutputPath = path.join(config.paths.output, relativePath);
+                //
+                // // 移动文件至 output
+                // CopyFiles(relativePath);
+                //
+                // // 打包 global
+                // const globalAsset = await PackGlobal(globalOutputPath);
+                //
+                // // 遍历项目的所有页面，替换 global js css
+                // glob.sync(path.join(globalOutputPath, '..', '*', '*.php')).forEach(filePath => {
+                //     let fileContent = fs.readFileSync(filePath);
+                //     const mat = fileContent.match(/\$this->pageGlobalStatic\((.+)\)/g);
+                //
+                //     if(!mat) {
+                //         return ;
+                //     }
+                //
+                //     fileContent = fileContent.replace(/global_(.+).js/, globalAsset.js);
+                //     fileContent = fileContent.replace(/global_(.+).css/, globalAsset.css);
+                //     fs.writeFileSync(filePath, fileContent);
+                // })
             }
             // 单页面打包
             else {
                 // www/mobile/index.php or www/mobile/page/page.php
-                const pagePath = path.relative(config.paths.pages, changeFilePath).split('/').length == 3 ? pathParse.dir : path.join(pathParse.dir, '..');
-                const relativePath = path.relative(config.paths.pages, pagePath);
-                const pageOutputPath = path.join(config.paths.output, relativePath);
-
-                CopyFiles(relativePath);
-
-                // 遍历项目的所有页面，替换 page js css
-                const pageFiles = glob.sync(path.join(pageOutputPath, '*.php'));
-                for (let filePath of pageFiles) {
-                    startTime = +new Date();
-                    Helper.log(`--- 任务 ${++taskCount}: 打包页面 ${path.relative(config.paths.output, filePath)} ---\n`);
-                    await PackSinglePage(filePath);
-                    Helper.log(`--- 耗时：${ Helper.caculateTime(startTime) } ---\n\n\n\n`);
-                };
+                // const pagePath = path.relative(config.paths.pages, changeFilePath).split('/').length == 3 ? pathParse.dir : path.join(pathParse.dir, '..');
+                // const relativePath = path.relative(config.paths.pages, pagePath);
+                // const pageOutputPath = path.join(config.paths.output, relativePath);
+                //
+                // CopyFiles(relativePath);
+                //
+                // // 遍历项目的所有页面，替换 page js css
+                // const pageFiles = glob.sync(path.join(pageOutputPath, '*.php'));
+                // for (let filePath of pageFiles) {
+                //     startTime = +new Date();
+                //     Helper.log(`--- 任务 ${++taskCount}: 打包页面 ${path.relative(config.paths.output, filePath)} ---\n`);
+                //     await PackSinglePage(filePath);
+                //     Helper.log(`--- 耗时：${ Helper.caculateTime(startTime) } ---\n\n\n\n`);
+                // };
             }
         }
 
@@ -129,6 +129,6 @@ async function packAll() {
 }
 
 (async function run() {
-    await packAll();
+    // await packAll();
     await WatchFiles();
 })();

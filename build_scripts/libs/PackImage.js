@@ -30,13 +30,19 @@ async function miniFile(filePath) {
         return fileContent;
     }else {
         if(!config.debug) {
-            const optimizedData = await imagemin.buffer(fileContent, {
-                plugins: [
-                    imageminJpegtran(),
-                    imageminOptipng(),
-                    imageminGifsicle()
-                ]
-            });
+            let optimizedData = fileContent;
+
+            try {
+                optimizedData = await imagemin.buffer(fileContent, {
+                    plugins: [
+                        imageminJpegtran(),
+                        imageminOptipng({ optimizationLevel: 2 }),
+                        imageminGifsicle()
+                    ]
+                });
+            } catch (e) {
+                console.log(e);
+            }
 
             const optimizedSize = optimizedData.length;
             const saved = originalSize - optimizedSize;
