@@ -2,7 +2,9 @@
 import path from 'path';
 import fs from 'fs-extra';
 import glob from 'glob';
+import chalk from 'chalk';
 import imagemin from 'imagemin';
+import prettyBytes from 'pretty-bytes';
 import imageminJpegtran from 'imagemin-jpegtran';
 import imageminOptipng from 'imagemin-optipng';
 import imageminGifsicle from 'imagemin-gifsicle';
@@ -17,6 +19,37 @@ function md5Slice(content) {
     return Helper.md5(content).slice(0, 5);
 }
 
+async function miniFile(filePath) {
+    const fileRelative = path.relative(paths.output, filePath);
+    const fileContent = fs.readFileSync(filePath);
+    const originalSize = fileContent.length;
+
+    // 如果大于 500kb 则提示
+    if(originalSize >= 1000 * 500) {
+        Helper.error(`    Warning: ${fileRelative} 图片过大：${prettyBytes(originalSize)}，图片不得大于 500kb，请压缩图片!\n`);
+        return fileContent;
+    }else {
+        if(!config.debug) {
+            const optimizedData = await imagemin.buffer(fileContent, {
+                plugins: [
+                    imageminJpegtran(),
+                    imageminOptipng(),
+                    imageminGifsicle()
+                ]
+            });
+
+            const optimizedSize = optimizedData.length;
+            const saved = originalSize - optimizedSize;
+            const percent = originalSize > 0 ? (saved / originalSize) * 100 : 0;
+            const savedMsg = `saved ${prettyBytes(saved)} - ${percent.toFixed(1).replace(/\.0$/, '')}%`;
+            const msg = saved > 0 ? savedMsg : 'already optimized';
+            console.log(`    imagemin: ${chalk.green('✔ ')}${fileRelative} ${chalk.gray(msg)}`);
+
+            return optimizedData;
+        }
+    }
+}
+
 // 打包一个目录下的图片
 async function packImageByDir(dirPath) {
     // 加入缓存判断，同一目录的避免重复打包替换
@@ -26,7 +59,7 @@ async function packImageByDir(dirPath) {
     }
     global.TEMP_CACHE.packImg[dirPath] = 1;
 
-    const namePrev = md5Slice(path.relative(config.paths.output, dirPath));
+    const namePrev = md5Slice(path.relative(paths.output, dirPath));
 
     removeOldFile("img_" + namePrev);
 
@@ -34,29 +67,24 @@ async function packImageByDir(dirPath) {
 
     if(!imgFiles.length) return ;
 
-    let miniedFiles;
-    if(!config.debug) {
-        try {
-            miniedFiles = await imagemin(imgFiles, '', {
-                plugins: [
-                    imageminJpegtran(),
-                    imageminOptipng(),
-                    imageminGifsicle()
-                ]
-            });
-        }catch(e) {
-            console.log(e);
-        }
+    let miniedFiles = {};
+
+    // 读取文件
+    // console.log(`    打包目录：${dirPath}`);
+    for (let filePath of imgFiles) {
+        const miniedContent = await miniFile(filePath);
+        miniedFiles[filePath] = miniedContent;
     }
+    console.log(`\n`);
 
     let imgNameReplaceObj = {};
     // 循环写入图片
     imgFiles.forEach((filePath, index) => {
         const pathInfo = path.parse(filePath);
-        const fileContent = miniedFiles ? miniedFiles[index].data : fs.readFileSync(filePath);
+        const fileContent = miniedFiles[filePath];
         const destImgName = "img_" + namePrev + md5Slice(fileContent) + "_" + pathInfo.base;
 
-        fs.writeFileSync(path.join(config.paths.buildImg, destImgName), fileContent);
+        fs.writeFileSync(path.join(paths.buildImg, destImgName), fileContent);
         imgNameReplaceObj[pathInfo.base] = destImgName;
     })
 
@@ -67,7 +95,7 @@ async function packImageByDir(dirPath) {
 
 // 删除原先的 文件
 function removeOldFile(outputName) {
-    const removeFiles = glob.sync(path.join(config.paths.buildImg, outputName + '*.*'));
+    const removeFiles = glob.sync(path.join(paths.buildImg, outputName + '*.*'));
     removeFiles.forEach((filePath) => {
         fs.removeSync(filePath);
     });

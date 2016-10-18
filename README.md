@@ -40,6 +40,7 @@ WatchFiles
 	EachPage 遍历各页面
 		-> 替换 global.js global.css
 
+
 libs 变化
 
 	PackLibs
@@ -52,29 +53,4 @@ libs 变化
 
     PackJSCSS // 合并JS CSS
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-	-
+End

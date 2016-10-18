@@ -129,6 +129,6 @@ async function packAll() {
 }
 
 (async function run() {
-    packAll();
-    // WatchFiles();
+    await packAll();
+    await WatchFiles();
 })();

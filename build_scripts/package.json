@@ -29,6 +29,7 @@
     "imagemin-jpegtran": "^5.0.2",
     "imagemin-optipng": "^5.2.1",
     "less": "^2.7.1",
+    "pretty-bytes": "^4.0.2",
     "uglify-js": "^2.7.3"
   }
 }

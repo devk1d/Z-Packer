@@ -15,7 +15,7 @@ Z.define('search/page', {
 		this.loadData(type, keyword);
 
 	},
-	
+
 	loadData: function(type, keyword, $btn) {
 		var self = this;
 		var $resultWrap = $('.search_result');
@@ -26,7 +26,7 @@ Z.define('search/page', {
 		F.loading($resultWrap, 'white');
 		$tab.hide();
 		self.$wrap.find('.result_contentItem').hide();
-		$.post('/search/search', {type: type, keyword, keyword}, function(json) {
+		$.post('/search/search', {type: type, keyword: keyword}, function(json) {
 			if(json.status == 200) {
 				var html = json.message.html;
 				self.$wrap.find('.result_contentItem').hide();
@@ -47,9 +47,9 @@ Z.define('search/page', {
 					var page = new Page({
 						wrap: self.$wrap.find('.page_resultList'),
 						url: '/search/search',
-						data: {type: type, keyword, keyword},
+						data: {type: type, keyword: keyword},
 						type: 'json',
-						totalPage: Math.ceil(json.message.total_number/20), 
+						totalPage: Math.ceil(json.message.total_number/20),
 						callback: function(data, page) {
 							F.loading($resultWrap, 'white');
 							F.unloading($resultWrap.height('auto'));
@@ -67,7 +67,7 @@ Z.define('search/page', {
 
 	},
 
-	bindEvent: function() { 
+	bindEvent: function() {
 		var self = this;
 
 		// 搜索类型选择
@@ -114,4 +114,3 @@ Z.define('search/page', {
 		})
 	}
 });
-	
