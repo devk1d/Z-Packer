@@ -67,7 +67,7 @@ var PackJSCSS = function () {
                         try {
                             packedCoded = babel.transform(packedCoded, {
                                 presets: ['latest'],
-                                plugins: [/*'transform-runtime'*/],
+                                plugins: ['babel-plugin-transform-remove-strict-mode' /*, 'transform-runtime'*/],
                                 compact: false
                             }).code;
                         } catch (err) {

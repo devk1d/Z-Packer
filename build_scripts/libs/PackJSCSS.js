@@ -44,8 +44,8 @@ async function PackJSCSS(opts) {
         try {
             packedCoded = babel.transform(packedCoded, {
                 presets: ['latest'],
-                plugins: [/*'transform-runtime'*/],
-                compact: false
+                plugins: ['babel-plugin-transform-remove-strict-mode' /*, 'transform-runtime'*/],
+                compact: false,
             }).code;
         }catch(err) {
             console.log(err);
