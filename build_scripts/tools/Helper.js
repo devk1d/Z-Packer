@@ -33,6 +33,15 @@ let Helper = {
     },
     caculateTime(startTime) {
         return ((+new Date() - startTime)/1000).toFixed(2) + 's';
+    },
+    initVal() {
+        global.ASSETS = {
+            libs: {
+                js: '',
+                css: ''
+            }
+        };
+        global.TEMP_CACHE = {};
     }
 }
 
