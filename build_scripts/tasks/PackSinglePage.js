@@ -51,61 +51,62 @@ async function PackSinglePage(pagePath) {
 
     let pageFileContent = fs.readFileSync(pagePath, { encoding: 'utf8' });
 
-    // 如果没有 layout 那就不用打包js css了
-    if(!~pageFileContent.indexOf('setLayout')) {
-        Helper.log(`--- 耗时：${ Helper.caculateTime(allStartTime) } ---\n\n\n`);
-        return ;
-    }
+    // 如果有 layout 则打包js css
+    if(~pageFileContent.indexOf('setLayout')) {
 
-    // 添加 libs js css
-    pageFileContent += `\n{pageLibsStatic "${global.ASSETS.libs.js}", "${global.ASSETS.libs.css}"}\n`;
+        // 添加 libs js css
+        pageFileContent += `\n{pageLibsStatic "${global.ASSETS.libs.js}", "${global.ASSETS.libs.css}"}\n`;
 
-    // 添加 global js css
-    const globalAsset = await processGlobal(pagePath);
-    pageFileContent += `\n{pageGlobalStatic "${globalAsset.js}", "${globalAsset.css}"}\n`;
+        // 添加 global js css
+        const globalAsset = await processGlobal(pagePath);
+        pageFileContent += `\n{pageGlobalStatic "${globalAsset.js}", "${globalAsset.css}"}\n`;
 
-    // 添加 page js css
-    startTime = +new Date();
-    let jsFiles = [], pageAsset = {js: '', css: ''};
-    widgetPathArr.forEach(widgetPath => {
-        jsFiles = jsFiles.concat(glob.sync(path.join(widgetPath, '*.js')));
-    });
-    jsFiles = jsFiles.concat(glob.sync(path.join(pageDir, pageName + '.js')));
-    if(jsFiles.length) {
-        pageAsset.js = await PackJSCSS({
-            packFiles: jsFiles,
-            packType: 'js',
-            outputName: 'page_' + Helper.md5(path.relative(config.paths.output, pagePath)).slice(0, 5),
+        // 添加 page js css
+        startTime = +new Date();
+        let jsFiles = [], pageAsset = {js: '', css: ''};
+        widgetPathArr.forEach(widgetPath => {
+            jsFiles = jsFiles.concat(glob.sync(path.join(widgetPath, '*.js')));
         });
-    }
+        jsFiles = jsFiles.concat(glob.sync(path.join(pageDir, pageName + '.js')));
+        if(jsFiles.length) {
+            pageAsset.js = await PackJSCSS({
+                packFiles: jsFiles,
+                packType: 'js',
+                outputName: 'page_' + Helper.md5(path.relative(config.paths.output, pagePath)).slice(0, 5),
+            });
+        }
 
-    let cssFiles = [];
-    widgetPathArr.forEach(widgetPath => {
-        cssFiles = cssFiles.concat(glob.sync(path.join(widgetPath, '*.*ss')));
-    });
-    cssFiles = cssFiles.concat(glob.sync(path.join(pageDir, pageName + '.*ss')));
-    if(cssFiles.length) {
-        pageAsset.css = await PackJSCSS({
-            packFiles: cssFiles,
-            packType: 'css',
-            outputName: 'page_' + Helper.md5(path.relative(config.paths.output, pagePath)).slice(0, 5),
-        })
-    }
+        let cssFiles = [];
+        widgetPathArr.forEach(widgetPath => {
+            cssFiles = cssFiles.concat(glob.sync(path.join(widgetPath, '*.*ss')));
+        });
+        cssFiles = cssFiles.concat(glob.sync(path.join(pageDir, pageName + '.*ss')));
+        if(cssFiles.length) {
+            pageAsset.css = await PackJSCSS({
+                packFiles: cssFiles,
+                packType: 'css',
+                outputName: 'page_' + Helper.md5(path.relative(config.paths.output, pagePath)).slice(0, 5),
+            })
+        }
 
-    pageFileContent += `\n{pagePageStatic "${pageAsset.js}", "${pageAsset.css}"}\n`;
+        pageFileContent += `\n{pagePageStatic "${pageAsset.js}", "${pageAsset.css}"}\n`;
+
+        //  php 模板替换
+        let phpFiles = [];
+        widgetPathArr.forEach(widgetPath => {
+            phpFiles = phpFiles.concat(glob.sync(path.join(widgetPath, '*.php')));
+        });
+        phpFiles.forEach(filePath => {
+            const fileContent = fs.readFileSync(filePath, { encoding: 'utf8' });
+            const newFileContent = ReplaceTemplate(fileContent);
+
+            newFileContent !== fileContent && fs.writeFileSync(filePath, newFileContent);
+        });
+
+    }
 
     //  php 模板替换
-    let phpFiles = [];
-    widgetPathArr.forEach(widgetPath => {
-        phpFiles = phpFiles.concat(glob.sync(path.join(widgetPath, '*.php')));
-    });
-    phpFiles.forEach(filePath => {
-        fs.writeFileSync(filePath, ReplaceTemplate(fs.readFileSync(filePath, { encoding: 'utf8' })));
-    });
-
-    pageFileContent = ReplaceTemplate(pageFileContent);
-
-    fs.writeFileSync(pagePath, pageFileContent);
+    fs.writeFileSync(pagePath, ReplaceTemplate(pageFileContent));
 
     Helper.logCyan(`    - 打包页面 js/css，耗时：${Helper.caculateTime(startTime)}\n`);
     Helper.log(`--- 耗时：${ Helper.caculateTime(allStartTime) } ---\n\n\n`);
