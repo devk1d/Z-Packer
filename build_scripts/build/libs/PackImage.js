@@ -39,7 +39,7 @@ var miniFile = function () {
 
                     case 8:
                         if (_config2.default.debug) {
-                            _context.next = 26;
+                            _context.next = 28;
                             break;
                         }
 
@@ -72,7 +72,10 @@ var miniFile = function () {
 
                         return _context.abrupt('return', optimizedData);
 
-                    case 26:
+                    case 28:
+                        return _context.abrupt('return', fileContent);
+
+                    case 29:
                     case 'end':
                         return _context.stop();
                 }

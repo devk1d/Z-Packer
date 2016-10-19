@@ -52,6 +52,8 @@ async function miniFile(filePath) {
             console.log(`    imagemin: ${chalk.green('✔ ')}${fileRelative} ${chalk.gray(msg)}`);
 
             return optimizedData;
+        }else {
+            return fileContent;
         }
     }
 }
