@@ -28,6 +28,7 @@ async function packAll() {
     // 打包 libs
     const libsAsset = await PackLibs(); // return {js: 'js file name', css: 'css file name'}
     global.ASSETS.libs = libsAsset;
+    return ;
 
     // 遍历页面
     const pageFiles = glob.sync(path.join(paths.output, '*', '*', '*.php'));
@@ -37,6 +38,6 @@ async function packAll() {
 }
 
 (async function run() {
-    // await packAll();
+    await packAll();
     await WatchFiles();
 })();

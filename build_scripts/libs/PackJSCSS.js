@@ -42,7 +42,11 @@ async function PackJSCSS(opts) {
         }
     }else {
         try {
-            packedCoded = babel.transform(packedCoded, { presets: ['latest'], compact: false }).code;
+            packedCoded = babel.transform(packedCoded, {
+                presets: ['latest'],
+                plugins: [/*'transform-runtime'*/],
+                compact: false
+            }).code;
         }catch(err) {
             console.log(err);
         }

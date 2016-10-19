@@ -7,6 +7,7 @@ import config from '../config';
 import CopyFiles from '../libs/CopyFiles';
 import PackGlobal from '../libs/PackGlobal';
 import PackLayouts from './PackLayouts';
+import PackLibs from './PackLibs';
 import PackSinglePage from './PackSinglePage';
 import Helper from '../tools/Helper';
 
@@ -24,7 +25,9 @@ async function WatchFiles() {
 
         // libs
         if(~changeFilePath.indexOf(paths.libs)) {
-            await packLibsTask();
+            // 打包 libs
+            const libsAsset = await PackLibs();
+            global.ASSETS.libs = libsAsset;
 
             // 遍历页面
             glob.sync(path.join(paths.output, '*', '*', '*.php')).forEach(filePath => {
