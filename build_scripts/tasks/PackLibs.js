@@ -14,6 +14,9 @@ const paths = config.paths;
  *
  */
 async function PackLibs() {
+    const startTime = +new Date();
+    Helper.log(`--- 任务: 打包libs ---\n`);
+
     const jsFiles = glob.sync(path.join(paths.libs, 'js', '*.js'));
     const packedJsName = await PackJSCSS({
         packFiles: jsFiles,
@@ -29,6 +32,7 @@ async function PackLibs() {
     })
 
     Helper.logCyan(`    - 打包 js/css \n`);
+    Helper.log(`--- 耗时：${ Helper.caculateTime(startTime) } ---\n\n\n`);
 
     return {js: packedJsName, css: packedCssName};
 }

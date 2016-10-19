@@ -36,8 +36,4 @@ let Helper = {
     }
 }
 
-Helper.md5Name = (filePath, content) => {
-    return Helper.md5(filePath).slice(0, 5) + Helper.md5(content).slice(0, 5)
-}
-
 export default Helper

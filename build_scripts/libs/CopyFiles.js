@@ -15,13 +15,17 @@ function CopyFiles(relativePath) {
     const rmPath = path.join(paths.output, relativePath);
 
     if(Helper.dirExists(rmPath) || Helper.fileExists(rmPath)) {
-        fs.removeSync(rmPath);
+        const startTime = +new Date();
+        Helper.log(`--- 任务: 复制目录 ---\n`);
+
         Helper.logCyan(`    - 删除目录/文件: ${rmPath}\n`);
+        fs.removeSync(rmPath);
 
         const cpPath = path.join(paths.pages, relativePath);
-        fs.copySync(cpPath, path.join(paths.output, relativePath));
         Helper.logCyan(`    - 复制目录/文件: ${cpPath}\n`);
+        fs.copySync(cpPath, path.join(paths.output, relativePath));
 
+        Helper.log(`--- 耗时：${ Helper.caculateTime(startTime) } ---\n\n\n`);
         return true;
     }else {
         return false;

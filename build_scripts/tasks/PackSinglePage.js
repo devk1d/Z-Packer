@@ -33,6 +33,9 @@ async function processGlobal(pagePath) {
  *
  */
 async function PackSinglePage(pagePath) {
+    const allStartTime = +new Date();
+    Helper.log(`--- 任务: 打包页面 ${path.relative(config.paths.output, pagePath)} ---\n`);
+
     const pageWidget = GetPageIncludeWidget(pagePath);
     const pathParse = path.parse(pagePath);
     const pageDir = pathParse.dir;
@@ -46,19 +49,20 @@ async function PackSinglePage(pagePath) {
     await PackImage([pageDir].concat(widgetPathArr));
     Helper.logCyan(`    - 打包图片，耗时：${Helper.caculateTime(startTime)}\n`);
 
-    let fileContent = fs.readFileSync(pagePath, { encoding: 'utf8' });
+    let pageFileContent = fs.readFileSync(pagePath, { encoding: 'utf8' });
 
     // 如果没有 layout 那就不用打包js css了
-    if(!~fileContent.indexOf('setLayout')) {
+    if(!~pageFileContent.indexOf('setLayout')) {
+        Helper.log(`--- 耗时：${ Helper.caculateTime(allStartTime) } ---\n\n\n`);
         return ;
     }
 
     // 添加 libs js css
-    fileContent += `\n{pageLibsStatic "${global.ASSETS.libs.js}", "${global.ASSETS.libs.css}"}\n`;
+    pageFileContent += `\n{pageLibsStatic "${global.ASSETS.libs.js}", "${global.ASSETS.libs.css}"}\n`;
 
     // 添加 global js css
     const globalAsset = await processGlobal(pagePath);
-    fileContent += `\n{pageGlobalStatic "${globalAsset.js}", "${globalAsset.css}"}\n`;
+    pageFileContent += `\n{pageGlobalStatic "${globalAsset.js}", "${globalAsset.css}"}\n`;
 
     // 添加 page js css
     startTime = +new Date();
@@ -87,13 +91,25 @@ async function PackSinglePage(pagePath) {
             outputName: 'page_' + Helper.md5(path.relative(config.paths.output, pagePath)).slice(0, 5),
         })
     }
-    fileContent += `\n{pagePageStatic "${pageAsset.js}", "${pageAsset.css}"}\n`;
+
+    pageFileContent += `\n{pagePageStatic "${pageAsset.js}", "${pageAsset.css}"}\n`;
 
     //  php 模板替换
-    fileContent = ReplaceTemplate(fileContent);
+    let phpFiles = [];
+    widgetPathArr.forEach(widgetPath => {
+        phpFiles = phpFiles.concat(glob.sync(path.join(widgetPath, '*.php')));
+    });
+    phpFiles.forEach(filePath => {
+        fs.writeFileSync(filePath, ReplaceTemplate(fs.readFileSync(filePath, { encoding: 'utf8' })));
+    });
 
-    fs.writeFileSync(pagePath, fileContent);
+    pageFileContent = ReplaceTemplate(pageFileContent);
+
+    fs.writeFileSync(pagePath, pageFileContent);
+
     Helper.logCyan(`    - 打包页面 js/css，耗时：${Helper.caculateTime(startTime)}\n`);
+    Helper.log(`--- 耗时：${ Helper.caculateTime(allStartTime) } ---\n\n\n`);
+
 }
 
 export default PackSinglePage;

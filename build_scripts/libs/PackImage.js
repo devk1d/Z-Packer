@@ -81,6 +81,9 @@ async function packImageByDir(dirPath) {
         const miniedContent = await miniFile(filePath);
         miniedFiles[filePath] = miniedContent;
     }
+    if(!config.debug) {
+        console.log("\n");
+    }
 
     let imgNameReplaceObj = {};
     // 循环写入图片

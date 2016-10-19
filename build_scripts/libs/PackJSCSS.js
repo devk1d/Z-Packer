@@ -5,6 +5,9 @@ import CleanCSS from 'clean-css';
 import glob from 'glob';
 import less from 'less';
 
+const babel = require('babel-core');
+
+
 import config from '../config';
 import Helper from '../tools/Helper';
 import ConcatFiles from './ConcatFiles';
@@ -21,10 +24,9 @@ async function PackJSCSS(opts) {
     const outputName = opts.outputName;
     const destPath = packType == 'js' ? config.paths.buildJs : config.paths.buildCss;
 
-    let packedCoded = "";
-    if(packType == 'css') {
-        packedCoded = ConcatFiles(packFiles);
+    let packedCoded = ConcatFiles(packFiles);
 
+    if(packType == 'css') {
         try {
             packedCoded = (await less.render(packedCoded)).css;
         }catch(err) {
@@ -32,18 +34,25 @@ async function PackJSCSS(opts) {
         }
 
         if(!config.debug) {
-            packedCoded = new CleanCSS().minify(packedCoded).styles;
-        }
-    }else {
-        if(!config.debug) {
             try {
-                packedCoded = UglifyJS.minify(packFiles).code;
+                packedCoded = new CleanCSS().minify(packedCoded).styles;
             }catch(err) {
                 console.log(err);
             }
+        }
+    }else {
+        try {
+            packedCoded = babel.transform(packedCoded, { presets: ['latest'], compact: false }).code;
+        }catch(err) {
+            console.log(err);
+        }
 
-        }else {
-            packedCoded = ConcatFiles(packFiles);
+        if(!config.debug) {
+            try {
+                packedCoded = UglifyJS.minify(packedCoded, { fromString: true }).code;
+            }catch(err) {
+                console.log(err);
+            }
         }
     }
 

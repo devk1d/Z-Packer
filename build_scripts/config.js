@@ -1,10 +1,14 @@
 import fs from 'fs-extra';
 import path from 'path';
 
-const rootPath = path.resolve(__dirname, '..');
+let rootPath = path.resolve(__dirname, '..');
+
+if(process.env.STATE === 'build') {
+    rootPath = path.resolve(__dirname, '..', '..');
+}    
 
 let conf = {
-    debug: true,
+    debug: process.env.NODE_ENV === "production" ? false : true,
     paths: {
         pages: path.resolve(rootPath, '..', '..', 'wwwroot', 'protected', 'pages'),
         output: path.resolve(rootPath, '..', '..', 'wwwroot', 'protected', 'output'),
