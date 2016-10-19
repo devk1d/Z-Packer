@@ -1,6 +1,5 @@
 .DS_Store
 build_scripts/node_modules
-build_scripts/build
 pages/
 output/
 static/page
