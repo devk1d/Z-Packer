@@ -38,7 +38,7 @@ let compileTplReg = [
 			[/<!--{\/scriptPool}-->/, '<?php $this->scriptPoolEnd(); ?>'],
 
 			//widget 方法
-			[/{widget (.*?)}/gi, '<?php $this->loadWidget($1); ?>'],
+			[/{widget ([\s\S]*?)}/mgi, '<?php $this->loadWidget($1); ?>'],
 
             [/{pageLibsStatic (.*?)}/gi, '<?php $this->pageLibsStatic($1); ?>'],
             [/{pageGlobalStatic (.*?)}/gi, '<?php $this->pageGlobalStatic($1); ?>'],
@@ -51,7 +51,7 @@ let compileTplReg = [
 			[/{scripts (.*?)}/gi, '<?php $this->scripts($1); ?>'],
 
 			//最后把注释去掉
-			[/<!--(.*?)-->/gi, ''],
+			[/<!--([\s\S]*?)-->/mgi, ''],
 ];
 
 export default function ReplaceTemplate(content) {

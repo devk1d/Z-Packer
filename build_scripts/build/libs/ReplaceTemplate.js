@@ -28,10 +28,10 @@ var compileTplReg = [
 [/<!--{scriptPool}-->/, '<?php $this->scriptPoolStart(); ?>'], [/<!--{\/scriptPool}-->/, '<?php $this->scriptPoolEnd(); ?>'],
 
 //widget 方法
-[/{widget (.*?)}/gi, '<?php $this->loadWidget($1); ?>'], [/{pageLibsStatic (.*?)}/gi, '<?php $this->pageLibsStatic($1); ?>'], [/{pageGlobalStatic (.*?)}/gi, '<?php $this->pageGlobalStatic($1); ?>'], [/{pagePageStatic (.*?)}/gi, '<?php $this->pagePageStatic($1); ?>'], [/{setLayout (.*?)}/gi, '<?php $this->setLayout($1); ?>'], [/{setTitle (.*?)}/gi, '<?php $this->setTitle($1); ?>'], [/{setKeywords(.*?)}/gi, '<?php $this->setKeywords($1); ?>'], [/{setDescription(.*?)}/gi, '<?php $this->setDescription($1); ?>'], [/{styles (.*?)}/gi, '<?php $this->styles($1); ?>'], [/{scripts (.*?)}/gi, '<?php $this->scripts($1); ?>'],
+[/{widget ([\s\S]*?)}/mgi, '<?php $this->loadWidget($1); ?>'], [/{pageLibsStatic (.*?)}/gi, '<?php $this->pageLibsStatic($1); ?>'], [/{pageGlobalStatic (.*?)}/gi, '<?php $this->pageGlobalStatic($1); ?>'], [/{pagePageStatic (.*?)}/gi, '<?php $this->pagePageStatic($1); ?>'], [/{setLayout (.*?)}/gi, '<?php $this->setLayout($1); ?>'], [/{setTitle (.*?)}/gi, '<?php $this->setTitle($1); ?>'], [/{setKeywords(.*?)}/gi, '<?php $this->setKeywords($1); ?>'], [/{setDescription(.*?)}/gi, '<?php $this->setDescription($1); ?>'], [/{styles (.*?)}/gi, '<?php $this->styles($1); ?>'], [/{scripts (.*?)}/gi, '<?php $this->scripts($1); ?>'],
 
 //最后把注释去掉
-[/<!--(.*?)-->/gi, '']];
+[/<!--([\s\S]*?)-->/mgi, '']];
 
 function ReplaceTemplate(content) {
 	compileTplReg.forEach(function (reg) {

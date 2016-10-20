@@ -110,7 +110,7 @@ var packImageByDir = function () {
                         return _context2.abrupt('return');
 
                     case 3:
-                        global.TEMP_CACHE.packImg[dirPath] = 1;
+                        global.TEMP_CACHE.packImg[dirPath] = true;
 
                         namePrev = md5Slice(_path2.default.relative(paths.output, dirPath));
 

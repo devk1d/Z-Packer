@@ -29,7 +29,7 @@ var conf = {
         libs: _path2.default.resolve(rootPath, '..', '..', 'wwwroot', 'static', 'libs')
     },
     regExp: {
-        widget: /{widget (.*?)}/gi
+        widget: /{widget ([\s\S]*?)}/mgi
     }
 };
 

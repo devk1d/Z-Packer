@@ -65,7 +65,7 @@ async function packImageByDir(dirPath) {
     if(global.TEMP_CACHE.packImg[dirPath]) {
         return ;
     }
-    global.TEMP_CACHE.packImg[dirPath] = 1;
+    global.TEMP_CACHE.packImg[dirPath] = true;
 
     const namePrev = md5Slice(path.relative(paths.output, dirPath));
 

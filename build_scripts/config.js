@@ -16,7 +16,7 @@ let conf = {
         libs: path.resolve(rootPath, '..', '..', 'wwwroot', 'static', 'libs'),
     },
     regExp: {
-        widget: /{widget (.*?)}/gi,
+        widget: /{widget ([\s\S]*?)}/mgi,
     },
 }
 

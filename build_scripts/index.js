@@ -2,14 +2,16 @@
 import path from 'path';
 import fs from 'fs-extra';
 import glob from 'glob';
+
 import config from './config';
-import CopyFiles from './libs/CopyFiles';
+import Helper from './tools/Helper';
+
 import PackLayouts from './tasks/PackLayouts';
-import PackLibs from './tasks/PackLibs';
-import PackGlobal from './libs/PackGlobal';
 import PackSinglePage from './tasks/PackSinglePage';
 import WatchFiles from './tasks/WatchFiles';
-import Helper from './tools/Helper';
+import PackLibs from './tasks/PackLibs';
+import CopyFiles from './libs/CopyFiles';
+import PackGlobal from './libs/PackGlobal';
 
 const paths = config.paths;
 

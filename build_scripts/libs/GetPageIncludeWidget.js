@@ -27,7 +27,7 @@ function getIncludeWidget(filePath) {
     let fileContent = fs.readFileSync(filePath, { encoding: 'utf8' });
 
     // 忽略掉注释
-    fileContent = fileContent.replace(/<!--(.*?)-->/gi, '');
+    fileContent = fileContent.replace(/<!--([\s\S]*?)-->/mgi, '');
 
     const matches = fileContent.match(regExp.widget) || [];
 

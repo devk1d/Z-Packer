@@ -170,21 +170,13 @@ var _config = require('./config');
 
 var _config2 = _interopRequireDefault(_config);
 
-var _CopyFiles = require('./libs/CopyFiles');
+var _Helper = require('./tools/Helper');
 
-var _CopyFiles2 = _interopRequireDefault(_CopyFiles);
+var _Helper2 = _interopRequireDefault(_Helper);
 
 var _PackLayouts = require('./tasks/PackLayouts');
 
 var _PackLayouts2 = _interopRequireDefault(_PackLayouts);
-
-var _PackLibs = require('./tasks/PackLibs');
-
-var _PackLibs2 = _interopRequireDefault(_PackLibs);
-
-var _PackGlobal = require('./libs/PackGlobal');
-
-var _PackGlobal2 = _interopRequireDefault(_PackGlobal);
 
 var _PackSinglePage = require('./tasks/PackSinglePage');
 
@@ -194,9 +186,17 @@ var _WatchFiles = require('./tasks/WatchFiles');
 
 var _WatchFiles2 = _interopRequireDefault(_WatchFiles);
 
-var _Helper = require('./tools/Helper');
+var _PackLibs = require('./tasks/PackLibs');
 
-var _Helper2 = _interopRequireDefault(_Helper);
+var _PackLibs2 = _interopRequireDefault(_PackLibs);
+
+var _CopyFiles = require('./libs/CopyFiles');
+
+var _CopyFiles2 = _interopRequireDefault(_CopyFiles);
+
+var _PackGlobal = require('./libs/PackGlobal');
+
+var _PackGlobal2 = _interopRequireDefault(_PackGlobal);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 

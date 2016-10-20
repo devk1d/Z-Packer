@@ -11,7 +11,7 @@ const paths = config.paths;
  * relativePath 相对 paths.pages 的目录位置
  */
 function CopyFiles(relativePath) {
-    // 删除响应的 output 目录
+    // 删除相应的 output 目录
     const rmPath = path.join(paths.output, relativePath);
 
     if(Helper.dirExists(rmPath) || Helper.fileExists(rmPath)) {

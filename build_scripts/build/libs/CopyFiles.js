@@ -29,7 +29,7 @@ var paths = _config2.default.paths;
  * relativePath 相对 paths.pages 的目录位置
  */
 function CopyFiles(relativePath) {
-    // 删除响应的 output 目录
+    // 删除相应的 output 目录
     var rmPath = _path2.default.join(paths.output, relativePath);
 
     if (_Helper2.default.dirExists(rmPath) || _Helper2.default.fileExists(rmPath)) {
