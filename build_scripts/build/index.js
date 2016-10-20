@@ -14,11 +14,13 @@ var _asyncToGenerator3 = _interopRequireDefault(_asyncToGenerator2);
 
 var packAll = function () {
     var _ref = (0, _asyncToGenerator3.default)(_regenerator2.default.mark(function _callee() {
-        var layoutPathArr, libsAsset, pageFiles, _iteratorNormalCompletion, _didIteratorError, _iteratorError, _iterator, _step, filePath;
+        var _this = this;
 
-        return _regenerator2.default.wrap(function _callee$(_context) {
+        var layoutPathArr, libsAsset, pageFiles, packProject, _iteratorNormalCompletion, _didIteratorError, _iteratorError, _loop, _iterator, _step;
+
+        return _regenerator2.default.wrap(function _callee$(_context2) {
             while (1) {
-                switch (_context.prev = _context.next) {
+                switch (_context2.prev = _context2.next) {
                     case 0:
                         _Helper2.default.initVal();
 
@@ -33,77 +35,118 @@ var packAll = function () {
                         });
 
                         // 打包 libs
-                        _context.next = 6;
+                        _context2.next = 6;
                         return (0, _PackLibs2.default)();
 
                     case 6:
-                        libsAsset = _context.sent;
+                        libsAsset = _context2.sent;
                         // return {js: 'js file name', css: 'css file name'}
                         global.ASSETS.libs = libsAsset;
 
                         // 遍历页面
                         pageFiles = _glob2.default.sync(_path2.default.join(paths.output, '*', '*', '*.php'));
+                        // 要打包的项目，为空则全部打包
+
+                        packProject = process.env.npm_config_pack_project;
+
+                        if (packProject) {
+                            packProject = packProject.split(/\s+/);
+                        }
+
                         _iteratorNormalCompletion = true;
                         _didIteratorError = false;
                         _iteratorError = undefined;
-                        _context.prev = 12;
+                        _context2.prev = 14;
+                        _loop = _regenerator2.default.mark(function _loop() {
+                            var filePath, isPack;
+                            return _regenerator2.default.wrap(function _loop$(_context) {
+                                while (1) {
+                                    switch (_context.prev = _context.next) {
+                                        case 0:
+                                            filePath = _step.value;
+                                            isPack = false;
+
+
+                                            if (packProject && packProject.length) {
+                                                packProject.forEach(function (projectName) {
+                                                    if (projectName && ~filePath.indexOf(_path2.default.join(paths.output, projectName) + '/')) {
+                                                        isPack = true;
+                                                    }
+                                                });
+                                            } else {
+                                                isPack = true;
+                                            }
+
+                                            if (!isPack) {
+                                                _context.next = 6;
+                                                break;
+                                            }
+
+                                            _context.next = 6;
+                                            return (0, _PackSinglePage2.default)(filePath);
+
+                                        case 6:
+                                        case 'end':
+                                            return _context.stop();
+                                    }
+                                }
+                            }, _loop, _this);
+                        });
                         _iterator = (0, _getIterator3.default)(pageFiles);
 
-                    case 14:
+                    case 17:
                         if (_iteratorNormalCompletion = (_step = _iterator.next()).done) {
-                            _context.next = 21;
+                            _context2.next = 22;
                             break;
                         }
 
-                        filePath = _step.value;
-                        _context.next = 18;
-                        return (0, _PackSinglePage2.default)(filePath);
+                        return _context2.delegateYield(_loop(), 't0', 19);
 
-                    case 18:
+                    case 19:
                         _iteratorNormalCompletion = true;
-                        _context.next = 14;
+                        _context2.next = 17;
                         break;
 
-                    case 21:
-                        _context.next = 27;
+                    case 22:
+                        _context2.next = 28;
                         break;
 
-                    case 23:
-                        _context.prev = 23;
-                        _context.t0 = _context['catch'](12);
+                    case 24:
+                        _context2.prev = 24;
+                        _context2.t1 = _context2['catch'](14);
                         _didIteratorError = true;
-                        _iteratorError = _context.t0;
+                        _iteratorError = _context2.t1;
 
-                    case 27:
-                        _context.prev = 27;
-                        _context.prev = 28;
+                    case 28:
+                        _context2.prev = 28;
+                        _context2.prev = 29;
 
                         if (!_iteratorNormalCompletion && _iterator.return) {
                             _iterator.return();
                         }
 
-                    case 30:
-                        _context.prev = 30;
+                    case 31:
+                        _context2.prev = 31;
 
                         if (!_didIteratorError) {
-                            _context.next = 33;
+                            _context2.next = 34;
                             break;
                         }
 
                         throw _iteratorError;
 
-                    case 33:
-                        return _context.finish(30);
-
                     case 34:
-                        return _context.finish(27);
+                        return _context2.finish(31);
 
                     case 35:
+                        return _context2.finish(28);
+
+                    case 36:
                     case 'end':
-                        return _context.stop();
+                        return _context2.stop();
                 }
             }
-        }, _callee, this, [[12, 23, 27, 35], [28,, 30, 34]]);
+        }, _callee, this, [[14, 24, 28, 36], [29,, 31, 35]]);
     }));
 
     return function packAll() {
@@ -161,20 +204,20 @@ var paths = _config2.default.paths;
 
 (function () {
     var _ref2 = (0, _asyncToGenerator3.default)(_regenerator2.default.mark(function _callee2() {
-        return _regenerator2.default.wrap(function _callee2$(_context2) {
+        return _regenerator2.default.wrap(function _callee2$(_context3) {
             while (1) {
-                switch (_context2.prev = _context2.next) {
+                switch (_context3.prev = _context3.next) {
                     case 0:
-                        _context2.next = 2;
+                        _context3.next = 2;
                         return packAll();
 
                     case 2:
-                        _context2.next = 4;
+                        _context3.next = 4;
                         return (0, _WatchFiles2.default)();
 
                     case 4:
                     case 'end':
-                        return _context2.stop();
+                        return _context3.stop();
                 }
             }
         }, _callee2, this);

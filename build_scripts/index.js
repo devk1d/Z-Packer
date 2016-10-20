@@ -31,8 +31,28 @@ async function packAll() {
 
     // 遍历页面
     const pageFiles = glob.sync(path.join(paths.output, '*', '*', '*.php'));
+    // 要打包的项目，为空则全部打包
+    let packProject = process.env.npm_config_pack_project;
+    if(packProject) {
+        packProject = packProject.split(/\s+/);
+    }
+
     for (let filePath of pageFiles) {
-        await PackSinglePage(filePath);
+        let isPack = false;
+
+        if(packProject && packProject.length) {
+            packProject.forEach((projectName) => {
+                if(projectName && ~filePath.indexOf(path.join(paths.output, projectName) + '/')) {
+                    isPack = true;
+                }
+            })
+        }else {
+            isPack = true;
+        }
+
+        if(isPack) {
+            await PackSinglePage(filePath);
+        }
     }
 }
 

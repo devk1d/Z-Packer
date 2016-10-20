@@ -14,9 +14,22 @@ import Helper from '../tools/Helper';
 const paths = config.paths;
 
 async function WatchFiles() {
-
     Helper.log('--- 开始监测文件变化 ---\n');
-    chokidar.watch([paths.pages, paths.libs], { ignored: /[\/\\]\./, ignoreInitial: true }).on('all', async function(event, changeFilePath) {
+
+    let watchDir = [paths.libs, path.join(paths.pages, 'layouts')];
+
+    // 要监测的项目，为空则全部监测
+    let packProject = process.env.npm_config_pack_project;
+    if(packProject) packProject = packProject.split(/\s+/);
+    if(packProject && packProject.length) {
+        packProject.forEach((projectName) => {
+            watchDir.push(path.join(paths.pages, projectName));
+        })
+    }else {
+        watchDir.push(paths.pages);
+    }
+
+    chokidar.watch(watchDir, { ignored: /[\/\\]\./, ignoreInitial: true }).on('all', async function(event, changeFilePath) {
         Helper.initVal();
 
         Helper.log(`--- 变化文件：${path.relative(paths.pages, changeFilePath)}, 类型：${event} ---\n`);

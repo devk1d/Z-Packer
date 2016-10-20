@@ -34,11 +34,8 @@ var compileTplReg = [
 [/<!--(.*?)-->/gi, '']];
 
 function ReplaceTemplate(content) {
-	var reg = compileTplReg;
-
-	for (var i = 0, l = reg.length; i < l; i++) {
-		content = content.replace(reg[i][0], reg[i][1]);
-	}
-
+	compileTplReg.forEach(function (reg) {
+		content = content.replace(reg[0], reg[1]);
+	});
 	return content;
 };

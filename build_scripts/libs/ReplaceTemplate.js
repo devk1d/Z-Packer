@@ -4,7 +4,7 @@
  *	例如： <!--{if a==1}--> 替换为 <?php if(a==1) { ?>
  */
 
-var compileTplReg = [
+let compileTplReg = [
 			//if 语句
 			[/<!--{if (.+?)}-->/gi, '<?php if ($1) { ?>'],
 			[/<!--{\/if}-->/gi, '<?php } ?>'],
@@ -55,11 +55,8 @@ var compileTplReg = [
 ];
 
 export default function ReplaceTemplate(content) {
-	var reg = compileTplReg;
-
-	for(var i=0, l=reg.length; i< l; i++) {
-		content = content.replace(reg[i][0], reg[i][1]);
-	}
-
+	compileTplReg.forEach(reg => {
+		content = content.replace(reg[0], reg[1]);
+	})
 	return content;
 };

@@ -18,13 +18,29 @@ var _asyncToGenerator3 = _interopRequireDefault(_asyncToGenerator2);
 
 var WatchFiles = function () {
     var _ref = (0, _asyncToGenerator3.default)(_regenerator2.default.mark(function _callee3() {
+        var watchDir, packProject;
         return _regenerator2.default.wrap(function _callee3$(_context3) {
             while (1) {
                 switch (_context3.prev = _context3.next) {
                     case 0:
-
                         _Helper2.default.log('--- 开始监测文件变化 ---\n');
-                        _chokidar2.default.watch([paths.pages, paths.libs], { ignored: /[\/\\]\./, ignoreInitial: true }).on('all', function () {
+
+                        watchDir = [paths.libs, _path2.default.join(paths.pages, 'layouts')];
+
+                        // 要监测的项目，为空则全部监测
+
+                        packProject = process.env.npm_config_pack_project;
+
+                        if (packProject) packProject = packProject.split(/\s+/);
+                        if (packProject && packProject.length) {
+                            packProject.forEach(function (projectName) {
+                                watchDir.push(_path2.default.join(paths.pages, projectName));
+                            });
+                        } else {
+                            watchDir.push(paths.pages);
+                        }
+
+                        _chokidar2.default.watch(watchDir, { ignored: /[\/\\]\./, ignoreInitial: true }).on('all', function () {
                             var _ref2 = (0, _asyncToGenerator3.default)(_regenerator2.default.mark(function _callee2(event, changeFilePath) {
                                 var _this = this;
 
@@ -235,7 +251,7 @@ var WatchFiles = function () {
                             };
                         }());
 
-                    case 2:
+                    case 6:
                     case 'end':
                         return _context3.stop();
                 }

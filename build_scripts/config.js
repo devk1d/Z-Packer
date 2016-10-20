@@ -5,7 +5,7 @@ let rootPath = path.resolve(__dirname, '..');
 
 if(process.env.STATE === 'build') {
     rootPath = path.resolve(__dirname, '..', '..');
-}    
+}
 
 let conf = {
     debug: process.env.NODE_ENV === "production" ? false : true,
@@ -24,7 +24,7 @@ conf.paths.buildJs = path.resolve(conf.paths.build, 'js');
 conf.paths.buildCss = path.resolve(conf.paths.build, 'css');
 conf.paths.buildImg = path.resolve(conf.paths.build, 'img');
 
-for (var name in conf.paths) {
+for (let name in conf.paths) {
     fs.ensureDirSync(conf.paths[name]);
 }
 

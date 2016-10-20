@@ -14,7 +14,6 @@ const libsFiles = glob.sync(path.join(rootDir, 'libs', '*.js'));
 const tasksFiles = glob.sync(path.join(rootDir, 'tasks', '*.js'));
 const toolsFiles = glob.sync(path.join(rootDir, 'tools', '*.js'));
 
-
 // 删除 build 里的文件
 fs.removeSync(buildDir);
 fs.ensureDirSync(buildDir);
