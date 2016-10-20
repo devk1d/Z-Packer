@@ -6,9 +6,9 @@ import chokidar from 'chokidar';
 import config from '../config';
 import CopyFiles from '../libs/CopyFiles';
 import PackGlobal from '../libs/PackGlobal';
+import PackSinglePage from '../libs/PackSinglePage';
 import PackLayouts from './PackLayouts';
 import PackLibs from './PackLibs';
-import PackSinglePage from './PackSinglePage';
 import Helper from '../tools/Helper';
 
 const paths = config.paths;
@@ -19,11 +19,10 @@ async function WatchFiles() {
     let watchDir = [paths.libs, path.join(paths.pages, 'layouts')];
 
     // 要监测的项目，为空则全部监测
-    let packProject = process.env.npm_config_pack_project;
-    if(packProject) packProject = packProject.split(/\s+/);
-    if(packProject && packProject.length) {
+    let packProject = process.env.npm_config_pack_project ? process.env.npm_config_pack_project.split(/\s+/) : [];
+    if(packProject.length) {
         packProject.forEach((projectName) => {
-            watchDir.push(path.join(paths.pages, projectName));
+            projectName && watchDir.push(path.join(paths.pages, projectName));
         })
     }else {
         watchDir.push(paths.pages);

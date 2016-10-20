@@ -36,6 +36,9 @@ var Helper = {
     logCyan: function logCyan(msg) {
         console.log(_chalk2.default.cyan(msg));
     },
+    logBlue: function logBlue(msg) {
+        console.log(_chalk2.default.blue(msg));
+    },
     error: function error(msg) {
         console.log(_chalk2.default.red(msg));
     },

@@ -29,12 +29,11 @@ var WatchFiles = function () {
 
                         // 要监测的项目，为空则全部监测
 
-                        packProject = process.env.npm_config_pack_project;
+                        packProject = process.env.npm_config_pack_project ? process.env.npm_config_pack_project.split(/\s+/) : [];
 
-                        if (packProject) packProject = packProject.split(/\s+/);
-                        if (packProject && packProject.length) {
+                        if (packProject.length) {
                             packProject.forEach(function (projectName) {
-                                watchDir.push(_path2.default.join(paths.pages, projectName));
+                                projectName && watchDir.push(_path2.default.join(paths.pages, projectName));
                             });
                         } else {
                             watchDir.push(paths.pages);
@@ -251,7 +250,7 @@ var WatchFiles = function () {
                             };
                         }());
 
-                    case 6:
+                    case 5:
                     case 'end':
                         return _context3.stop();
                 }
@@ -292,6 +291,10 @@ var _PackGlobal = require('../libs/PackGlobal');
 
 var _PackGlobal2 = _interopRequireDefault(_PackGlobal);
 
+var _PackSinglePage = require('../libs/PackSinglePage');
+
+var _PackSinglePage2 = _interopRequireDefault(_PackSinglePage);
+
 var _PackLayouts = require('./PackLayouts');
 
 var _PackLayouts2 = _interopRequireDefault(_PackLayouts);
@@ -299,10 +302,6 @@ var _PackLayouts2 = _interopRequireDefault(_PackLayouts);
 var _PackLibs = require('./PackLibs');
 
 var _PackLibs2 = _interopRequireDefault(_PackLibs);
-
-var _PackSinglePage = require('./PackSinglePage');
-
-var _PackSinglePage2 = _interopRequireDefault(_PackSinglePage);
 
 var _Helper = require('../tools/Helper');
 

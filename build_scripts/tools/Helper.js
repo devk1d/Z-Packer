@@ -14,6 +14,9 @@ let Helper = {
     logCyan: (msg) => {
         console.log(chalk.cyan(msg));
     },
+    logBlue: (msg) => {
+        console.log(chalk.blue(msg));
+    },
     error: (msg) => {
         console.log(chalk.red(msg));
     },

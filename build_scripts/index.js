@@ -7,9 +7,9 @@ import config from './config';
 import Helper from './tools/Helper';
 
 import PackLayouts from './tasks/PackLayouts';
-import PackSinglePage from './tasks/PackSinglePage';
 import WatchFiles from './tasks/WatchFiles';
 import PackLibs from './tasks/PackLibs';
+import PackPages from './tasks/PackPages';
 import CopyFiles from './libs/CopyFiles';
 import PackGlobal from './libs/PackGlobal';
 
@@ -31,31 +31,7 @@ async function packAll() {
     const libsAsset = await PackLibs(); // return {js: 'js file name', css: 'css file name'}
     global.ASSETS.libs = libsAsset;
 
-    // 遍历页面
-    const pageFiles = glob.sync(path.join(paths.output, '*', '*', '*.php'));
-    // 要打包的项目，为空则全部打包
-    let packProject = process.env.npm_config_pack_project;
-    if(packProject) {
-        packProject = packProject.split(/\s+/);
-    }
-
-    for (let filePath of pageFiles) {
-        let isPack = false;
-
-        if(packProject && packProject.length) {
-            packProject.forEach((projectName) => {
-                if(projectName && ~filePath.indexOf(path.join(paths.output, projectName) + '/')) {
-                    isPack = true;
-                }
-            })
-        }else {
-            isPack = true;
-        }
-
-        if(isPack) {
-            await PackSinglePage(filePath);
-        }
-    }
+    await PackPages();
 }
 
 (async function run() {
