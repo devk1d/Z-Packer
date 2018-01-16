@@ -1,6 +1,6 @@
 # Z-Packer
 
-第一次运行：
+脚本运行流程：
 
 	CopyFiles 拷贝 pages 目录至 output
 
